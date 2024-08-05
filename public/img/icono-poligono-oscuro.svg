@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="50.555" height="50.943" viewBox="0 0 50.555 50.943">
+  <g id="Componente_1_12" data-name="Componente 1 – 12" transform="translate(0.5 0.5)">
+    <path id="Trazado_8" data-name="Trazado 8" d="M396,1038.041v-16.51h16.468" transform="translate(-395.979 -1021.531)" fill="none" stroke="#111c26" stroke-width="1"/>
+    <path id="Trazado_9" data-name="Trazado 9" d="M0,16.51V0H16.468" transform="translate(49.555 0.41) rotate(90)" fill="none" stroke="#111c26" stroke-width="1"/>
+    <path id="Trazado_10" data-name="Trazado 10" d="M0,16.51V0H16.468" transform="translate(49.533 49.943) rotate(180)" fill="none" stroke="#111c26" stroke-width="1"/>
+    <path id="Trazado_11" data-name="Trazado 11" d="M0,16.51V0H16.468" transform="translate(0 49.922) rotate(-90)" fill="none" stroke="#111c26" stroke-width="1"/>
+    <g id="Rectángulo_134" data-name="Rectángulo 134" transform="translate(24.735 17.018) rotate(45)" fill="#111c26" stroke="#111c26" stroke-width="1">
+      <rect width="11.663" height="11.663" stroke="none"/>
+      <rect x="0.5" y="0.5" width="10.663" height="10.663" fill="none"/>
+    </g>
+    <line id="Línea_3" data-name="Línea 3" x2="11.663" y2="12.829" transform="translate(3.714 3.098)" fill="none" stroke="#111c26" stroke-width="1"/>
+    <line id="Línea_6" data-name="Línea 6" y1="11.663" x2="11.663" transform="translate(3.714 34.976)" fill="none" stroke="#111c26" stroke-width="1"/>
+    <line id="Línea_4" data-name="Línea 4" x2="11.274" y2="11.663" transform="translate(34.815 34.976)" fill="none" stroke="#111c26" stroke-width="1"/>
+    <line id="Línea_5" data-name="Línea 5" y1="11.663" x2="11.274" transform="translate(34.815 4.264)" fill="none" stroke="#111c26" stroke-width="1"/>
+  </g>
+</svg>

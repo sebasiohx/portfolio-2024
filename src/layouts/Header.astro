@@ -1,0 +1,100 @@
+---
+const isIndex = Astro.url.pathname === "/";
+---
+
+<script>
+  const headerClasses = () => {
+    let headerCSS: any = document.querySelector(".Header")?.classList;
+
+    document.addEventListener('scroll', ()=>{
+      let altura: number = window.scrollY;
+  
+      if(headerCSS.contains('Header--home')){
+        if (altura > 0 && altura < 730) {
+            headerCSS.add("Header--estrecho");
+            headerCSS.remove("Header--bg");
+          } else if (altura >= 730) {
+            headerCSS.add("Header--bg");
+          } else {
+            headerCSS.remove("Header--estrecho", "Header--bg");
+          }
+      } else {
+        if (altura > 250) {
+            headerCSS.add("Header--estrecho", "Header--bg");
+          } else {
+            headerCSS.remove("Header--estrecho", "Header--bg");
+          }
+      }
+    })
+  }
+
+	headerClasses();
+</script>
+
+
+<header id="Header" class:list={['Header', {'Header--home': isIndex}]}>
+  <div class="contenedor contenedor--jc-sb">
+    <a href="/" class="Header__logo">
+      <img
+        class="Header__logo-img"
+        src="img/logo-so.svg"
+        alt="logo Sebaolate"
+      />
+    </a>
+    <button id="boton-menu" class="boton boton--menu">
+      Menu
+      <i class="boton__icono fas fa-bars"></i>
+    </button>
+  </div>
+</header>
+
+<style lang="scss">
+  .Header {
+    background-color: transparent;
+    position: fixed; //fixed
+    display: block;
+    height: 140px;
+    width: 100%;
+    z-index: 10;
+    top: 0;
+    overflow: hidden;
+    transition: 0.35s;
+
+    &--estrecho {
+      height: 100px;
+
+      .Header__logo {
+        width: 225px;
+        padding-top: 28px;
+      }
+    }
+
+    &--bg {
+      background-color: var(--bg-color);
+      height: 80px;
+
+      .Header__logo {
+        width: 145px;
+        padding: 25px;
+      }
+    }
+
+    &__logo {
+      display: block;
+      background-color: var(--main-color);
+      padding: 35px 40px;
+      width: 276px;
+      //height: 140px;
+      transition: 0.35s;
+
+      &:hover {
+        background-color: color-mix(in srgb, var(--main-color), #000 15%);
+        transition: 0.35s;
+      }
+    }
+
+    &__logo-img {
+      width: 100%;
+    }
+  }
+</style>
