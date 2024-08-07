@@ -3,6 +3,7 @@ const isIndex = Astro.url.pathname === "/";
 ---
 
 <script>
+  /* funcion para el comportamiento del header segun este en el index o no */
   const headerClasses = () => {
     let headerCSS: any = document.querySelector(".Header")?.classList;
 
@@ -29,11 +30,23 @@ const isIndex = Astro.url.pathname === "/";
   }
 
 	headerClasses();
+
+  /* funcion para el boton de cambiar theme */
+  function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute("data-theme");
+    const newTheme = currentTheme === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", newTheme);
+    localStorage.setItem("theme", newTheme);
+  }
+
+  const switchTheme: any = document.getElementById('btn-theme');
+
+  switchTheme.addEventListener('click', toggleTheme);
 </script>
 
 
 <header id="Header" class:list={['Header', {'Header--home': isIndex}]}>
-  <div class="contenedor contenedor--jc-sb">
+  <div class="flex">
     <a href="/" class="Header__logo">
       <img
         class="Header__logo-img"
@@ -41,6 +54,9 @@ const isIndex = Astro.url.pathname === "/";
         alt="logo Sebaolate"
       />
     </a>
+
+    <button id="btn-theme" class="py-3 px-4 inline-flex items-center gap-2 bg-blue-600 text-sm font-medium text-center text-white rounded-lg focus:outline-none">Cambiar tema</button>
+
     <button id="boton-menu" class="boton boton--menu">
       Menu
       <i class="boton__icono fas fa-bars"></i>
