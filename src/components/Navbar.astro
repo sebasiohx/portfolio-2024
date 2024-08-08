@@ -1,0 +1,116 @@
+<script>
+  const switchTheme: any = document.getElementById('btn-theme');
+  const textSwitchTheme: any = document.querySelector('.btn-theme__text');
+  const iconSwitchTheme: any = document.querySelector('.btn-theme__icon');
+
+  function toggleContentBtnTheme(theme: string) {
+    textSwitchTheme.innerText = theme === 'dark' ? 'Dark' : 'Light';
+    
+    if(theme === 'dark'){
+      iconSwitchTheme.classList.remove('fa-sun-o');
+      iconSwitchTheme.classList.add('fa-moon-o');
+    } else {
+      iconSwitchTheme.classList.remove('fa-moon-o');
+      iconSwitchTheme.classList.add('fa-sun-o');
+    }
+  }
+  
+  /* funcion para el boton de cambiar theme */
+  function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute("data-theme");
+    const newTheme = currentTheme === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", newTheme);
+    localStorage.setItem("theme", newTheme);
+    toggleContentBtnTheme(newTheme);
+  }
+
+  switchTheme.addEventListener('click', toggleTheme);
+
+  /* funcion para guardar y cargar el tema en el local storage */
+	function loadTheme() {
+		const savedTheme = localStorage.getItem("theme") || "dark";
+		document.documentElement.setAttribute("data-theme", savedTheme);
+    toggleContentBtnTheme(savedTheme);
+	}
+
+	loadTheme()
+</script>
+
+<nav>
+  <button id="btn-theme" class="boton boton--menu">
+    <span class="btn-theme__text"></span>
+    <i class="btn-theme__icon boton__icono fa" aria-hidden="true"></i>
+  </button>
+  
+  <button id="boton-menu" class="boton boton--menu">
+    Menu
+    <i class="boton__icono fas fa-bars"></i>
+  </button>
+</nav>
+
+<style is:global lang="scss">
+  .boton {
+    appearance: none;
+    background: none;
+    border: none;
+    text-decoration: none;
+    margin: 15px 5px;
+    padding: 10px 30px;
+    cursor: pointer;
+    height: min-content;
+    //font-family: $oswald;
+    font-size: 1.2rem;
+    color: var(--main-color);
+    outline: 1px solid var(--main-color);
+    outline-offset: 3px;
+    box-shadow: inset 0px 0 0 0 var(--main-color);
+    transition: .35s;
+    display: inline-block;
+
+    &:hover {
+        color: var(--bg-color);
+        box-shadow: inset 300px 0 0 0 var(--main-color);
+        transition: .3s;
+    }
+
+    &__icono {
+        margin-left: 15px;
+    }
+
+    &--sin-borde {
+        outline: none;
+    }
+
+    &--bgblanco {
+        color: var(--bg-color);
+        outline: 1px solid var(--bg-color);
+    }
+
+    &--blanco {
+        color: var(--text-color);
+        outline: 1px solid var(--text-color);
+    }
+
+    &--center{
+        display: table;
+        margin: 80px auto;
+    }
+
+    @media (width <= 767px) {
+        &--menu{
+            padding: 10px 15px;
+            margin-right: 20px;
+        }
+    }
+  }
+
+  [data-theme="light"]{
+    .boton{
+      color: var(--text-color);
+      outline: 1px solid var(--text-color);
+    }
+  }
+</style>
+<style lang="scss">
+
+</style>
