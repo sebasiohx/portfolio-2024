@@ -1,20 +1,20 @@
 <script>
-  const switchTheme: any = document.getElementById('btn-theme');
-  const textSwitchTheme: any = document.querySelector('.btn-theme__text');
-  const iconSwitchTheme: any = document.querySelector('.btn-theme__icon');
+  const switchTheme: any = document.getElementById("btn-theme");
+  const textSwitchTheme: any = document.querySelector(".btn-theme__text");
+  const iconSwitchTheme: any = document.querySelector(".btn-theme__icon");
 
   function toggleContentBtnTheme(theme: string) {
-    textSwitchTheme.innerText = theme === 'dark' ? 'Dark' : 'Light';
-    
-    if(theme === 'dark'){
-      iconSwitchTheme.classList.remove('fa-sun-o');
-      iconSwitchTheme.classList.add('fa-moon-o');
+    textSwitchTheme.innerText = theme === "dark" ? "Dark" : "Light";
+
+    if (theme === "dark") {
+      iconSwitchTheme.classList.remove("fa-sun-o");
+      iconSwitchTheme.classList.add("fa-moon-o");
     } else {
-      iconSwitchTheme.classList.remove('fa-moon-o');
-      iconSwitchTheme.classList.add('fa-sun-o');
+      iconSwitchTheme.classList.remove("fa-moon-o");
+      iconSwitchTheme.classList.add("fa-sun-o");
     }
   }
-  
+
   /* funcion para el boton de cambiar theme */
   function toggleTheme() {
     const currentTheme = document.documentElement.getAttribute("data-theme");
@@ -24,16 +24,16 @@
     toggleContentBtnTheme(newTheme);
   }
 
-  switchTheme.addEventListener('click', toggleTheme);
+  switchTheme.addEventListener("click", toggleTheme);
 
   /* funcion para guardar y cargar el tema en el local storage */
-	function loadTheme() {
-		const savedTheme = localStorage.getItem("theme") || "dark";
-		document.documentElement.setAttribute("data-theme", savedTheme);
+  function loadTheme() {
+    const savedTheme = localStorage.getItem("theme") || "dark";
+    document.documentElement.setAttribute("data-theme", savedTheme);
     toggleContentBtnTheme(savedTheme);
-	}
+  }
 
-	loadTheme()
+  loadTheme();
 </script>
 
 <nav>
@@ -41,12 +41,42 @@
     <span class="btn-theme__text"></span>
     <i class="btn-theme__icon boton__icono fa" aria-hidden="true"></i>
   </button>
-  
+
   <button id="boton-menu" class="boton boton--menu">
     Menu
     <i class="boton__icono fas fa-bars"></i>
   </button>
 </nav>
+
+<!-- <aside id="menu">
+  <div class="menu__cierre">
+    <img src="img/close.png" alt="cerrar menu" class="menu__cierre-img" />
+  </div>
+  <nav class="menu__container">
+    <a href="index.html" class="menu__link" data-menu-icono="0"> Home </a>
+    <a href="portafolio.html" class="menu__link" data-menu-icono="1">
+      Portafolio
+    </a>
+    <a
+      href="https://codepen.io/Solate"
+      class="menu__link"
+      target="_blank"
+      rel="noopener noreferrer"
+      data-menu-icono="2"
+    >
+      Experimentos
+    </a>
+    <a href="acerca-de-mi.html" class="menu__link" data-menu-icono="3">
+      Acerca de mi
+    </a>
+  </nav>
+  <div class="menu__iconos">
+    <i class="menu__icono menu__icono--0 fas fa-home"></i>
+    <i class="menu__icono menu__icono--1 fas fa-suitcase"></i>
+    <i class="menu__icono menu__icono--2 fas fa-flask"></i>
+    <i class="menu__icono menu__icono--3 fas fa-running"></i>
+  </div>
+</aside> -->
 
 <style is:global lang="scss">
   .boton {
@@ -64,53 +94,164 @@
     outline: 1px solid var(--main-color);
     outline-offset: 3px;
     box-shadow: inset 0px 0 0 0 var(--main-color);
-    transition: .35s;
+    transition: 0.35s;
     display: inline-block;
 
     &:hover {
-        color: var(--bg-color);
-        box-shadow: inset 300px 0 0 0 var(--main-color);
-        transition: .3s;
+      color: var(--bg-color);
+      box-shadow: inset 300px 0 0 0 var(--main-color);
+      transition: 0.3s;
     }
 
     &__icono {
-        margin-left: 15px;
+      margin-left: 15px;
     }
 
     &--sin-borde {
-        outline: none;
+      outline: none;
     }
 
     &--bgblanco {
-        color: var(--bg-color);
-        outline: 1px solid var(--bg-color);
+      color: var(--bg-color);
+      outline: 1px solid var(--bg-color);
     }
 
     &--blanco {
-        color: var(--text-color);
-        outline: 1px solid var(--text-color);
+      color: var(--text-color);
+      outline: 1px solid var(--text-color);
     }
 
-    &--center{
-        display: table;
-        margin: 80px auto;
+    &--center {
+      display: table;
+      margin: 80px auto;
     }
 
     @media (width <= 767px) {
-        &--menu{
-            padding: 10px 15px;
-            margin-right: 20px;
-        }
+      &--menu {
+        padding: 10px 15px;
+        margin-right: 20px;
+      }
     }
   }
 
-  [data-theme="light"]{
-    .boton{
+  [data-theme="light"] {
+    .boton {
       color: var(--text-color);
       outline: 1px solid var(--text-color);
     }
   }
 </style>
-<style lang="scss">
+<!-- <style lang="scss">
+  .menu {
+    position: fixed;
+    top: 0;
+    right: 0%;
+    z-index: 999;
+    background: rgba($grey, 0.9);
+    width: 30%;
+    height: 100vh;
+    border-left: 10px solid $mainColor;
+    transition: 0.35s;
+    display: block;
+    transform: translateX(100%);
 
-</style>
+    &--activo {
+      transform: translateX(0%);
+      transition: 0.35s;
+    }
+
+    &__cierre {
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 1000;
+      background-color: transparent;
+      cursor: pointer;
+      padding: 10px 5px;
+      transition: 0.35s;
+
+      &:hover {
+        background-color: $darkBlue;
+        transition: 0.35s;
+      }
+
+      &-img {
+        display: block;
+        width: 80%;
+        margin: 0 auto;
+      }
+    }
+
+    &__container {
+      display: flex;
+      flex-direction: column;
+      margin-top: 100px;
+    }
+
+    &__link {
+      display: block;
+      font-family: $bebas;
+      color: $mainColor;
+      text-decoration: none;
+      padding-left: 50px;
+      font-size: 3vw;
+      line-height: 6vw;
+      transition: all 300ms ease-in-out;
+      box-shadow: inset 0px 0 0 0 $mainColor;
+
+      &:hover {
+        color: $darkBlue;
+        box-shadow:
+          1000px 0 $mainColor inset,
+          -1000px 0 $mainColor inset;
+        //transition: .3s;
+      }
+    }
+
+    &__iconos {
+      display: flex;
+      background-color: #00facb;
+      width: 150px;
+      height: 150px;
+      margin: 10vh auto 0;
+      justify-content: center;
+      align-items: center;
+      transform: rotate(45deg);
+    }
+
+    &__icono {
+      display: none;
+      @include fSize(90);
+      color: $grey;
+      transition: 0.3s;
+      transform: rotate(-45deg);
+
+      &--1,
+      &--2,
+      &--3 {
+        transition: 0.3s;
+      }
+    }
+
+    @include media(sm) {
+      width: 50%;
+
+      &__link {
+        font-size: 5vw;
+        line-height: 8vw;
+      }
+    }
+    @include media(xs) {
+      width: 100%;
+
+      &__link {
+        @include fSize(45);
+        line-height: 70px;
+      }
+      &__iconos {
+        width: 100px;
+        height: 100px;
+      }
+    }
+  }
+</style> -->

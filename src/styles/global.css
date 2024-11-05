@@ -1,0 +1,35 @@
+:root {
+  --font-size: 16px;
+  --font-family: system-ui, sans-serif;
+}
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --main-color: #00facb;
+  --bg-color: #111c26;
+  --text-color: #F2EEE6;
+}
+[data-theme="light"] {
+  color-scheme: light;
+
+  --main-color: #50fa00;
+  --bg-color: #F2EEE6;
+  --text-color: #111c26;
+}
+html {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+}
+code {
+  font-family:
+    Menlo,
+    Monaco,
+    Lucida Console,
+    Liberation Mono,
+    DejaVu Sans Mono,
+    Bitstream Vera Sans Mono,
+    Courier New,
+    monospace;
+}

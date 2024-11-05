@@ -1,0 +1,152 @@
+---
+import Layout from "../../layouts/Layout.astro"; 
+---
+
+<Layout title="SebaOlate | Front-end developer">
+  <div class="banner">
+    <div class="slider" style="--quantity: 10">
+      <div class="item" style="--position: 1">
+        <img class="item__img" src="/public/assets/css-gallery-3d/dragon_1.jpg" alt="" />
+        <div class="item__backface">
+          <img class="item__backface__img" src="/public/assets/logo-so.svg" alt="logo Sebaolate"/>
+        </div>
+      </div>
+      <div class="item" style="--position: 2">
+        <img class="item__img" src="/public/assets/css-gallery-3d/dragon_2.jpg" alt="" />
+        <div class="item__backface">
+          <img class="item__backface__img" src="/public/assets/logo-so.svg" alt="logo Sebaolate"/>
+        </div>
+      </div>
+      <div class="item" style="--position: 3">
+        <img class="item__img" src="/public/assets/css-gallery-3d/dragon_3.jpg" alt="" />
+        <div class="item__backface">
+          <img class="item__backface__img" src="/public/assets/logo-so.svg" alt="logo Sebaolate"/>
+        </div>
+      </div>
+      <div class="item" style="--position: 4">
+        <img class="item__img" src="/public/assets/css-gallery-3d/dragon_4.jpg" alt="" />
+        <div class="item__backface">
+          <img class="item__backface__img" src="/public/assets/logo-so.svg" alt="logo Sebaolate"/>
+        </div>
+      </div>
+      <div class="item" style="--position: 5">
+        <img class="item__img" src="/public/assets/css-gallery-3d/dragon_5.jpg" alt="" />
+        <div class="item__backface">
+          <img class="item__backface__img" src="/public/assets/logo-so.svg" alt="logo Sebaolate"/>
+        </div>
+      </div>
+      <div class="item" style="--position: 6">
+        <img class="item__img" src="/public/assets/css-gallery-3d/dragon_6.jpg" alt="" />
+        <div class="item__backface">
+          <img class="item__backface__img" src="/public/assets/logo-so.svg" alt="logo Sebaolate"/>
+        </div>
+      </div>
+      <div class="item" style="--position: 7">
+        <img class="item__img" src="/public/assets/css-gallery-3d/dragon_7.jpg" alt="" />
+        <div class="item__backface">
+          <img class="item__backface__img" src="/public/assets/logo-so.svg" alt="logo Sebaolate"/>
+        </div>
+      </div>
+      <div class="item" style="--position: 8">
+        <img class="item__img" src="/public/assets/css-gallery-3d/dragon_8.jpg" alt="" />
+        <div class="item__backface">
+          <img class="item__backface__img" src="/public/assets/logo-so.svg" alt="logo Sebaolate"/>
+        </div>
+      </div>
+      <div class="item" style="--position: 9">
+        <img class="item__img" src="/public/assets/css-gallery-3d/dragon_9.jpg" alt="" />
+        <div class="item__backface">
+          <img class="item__backface__img" src="/public/assets/logo-so.svg" alt="logo Sebaolate"/>
+        </div>
+      </div>
+      <div class="item" style="--position: 10">
+        <img class="item__img" src="/public/assets/css-gallery-3d/dragon_10.jpg" alt="" />
+        <div class="item__backface">
+          <img class="item__backface__img" src="/public/assets/logo-so.svg" alt="logo Sebaolate"/>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <h1>Portafolio</h1>
+      <div class="author">
+        <h2>SEBA OLATE</h2>
+        <p><b>Web Design</b></p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel id consectetur quos? Consectetur nulla nostrum consequuntur aperiam? Accusantium quae rem sapiente perspiciatis, optio sunt fugiat iure commodi voluptatem enim ipsum.</p>
+      </div>
+      <div class="model"></div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .banner {
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .banner .slider {
+    position: absolute;
+    width: 200px;
+    height: 250px;
+    top: 10%;
+    left: calc(50% - 100px);
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    animation: autoRun 20s linear infinite;
+  }
+  @keyframes autoRun {
+    from{
+      transform: perspective(1000px) rotateX(-16deg) rotateY(0deg);
+    } to {
+      transform: perspective(1000px) rotateX(-16deg) rotateY(360deg);
+    }
+  }
+  .banner .slider .item {
+    position: absolute;
+    inset: 0 0 0 0;
+    transform-style: preserve-3d;
+    transform:
+      rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+      translateZ(550px);
+  }
+  .banner .slider .item .item__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 0 0;
+    position: absolute;
+    inset: 0 0 0 0;
+    backface-visibility: hidden;
+  }
+  .banner .slider .item .item__backface{
+    position: absolute;
+    inset: 0 0 0 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--main-color);
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .banner .slider .item .item__backface .item__backface__img{
+    width: 80%;
+  }
+
+  .banner .content{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(1400px, 100vw);
+    height: max-content;
+    padding-bottom: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+</style>
