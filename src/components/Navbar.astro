@@ -1,50 +1,80 @@
+---
+/** Menu items */
+const textLinks: { label: string; href: string }[] = [
+  { label: 'Home', href: '/' },
+  { label: 'Portafolio', href: '/portfolio/' },
+  { label: 'Acerca de mi', href: '/about/' },
+];
+
+/** Menu icons */
+const iconsLinks: { label: string; href: string; icon: string }[] = [
+  { label: 'GitHub', href: 'https://github.com/me', icon: 'github-logo' },
+	{ label: 'CodePen', href: 'https://codepen.io/me', icon: 'codepen-logo' },
+];
+---
+
 <script>
-  const switchTheme: any = document.getElementById("btn-theme");
-  const textSwitchTheme: any = document.querySelector(".btn-theme__text");
-  const iconSwitchTheme: any = document.querySelector(".btn-theme__icon");
+  const switchTheme: any = document.getElementById('btn-theme');
+  const textSwitchTheme: any = document.querySelector('.btn-theme__text');
+  const iconSwitchTheme: any = document.querySelector('.btn-theme__icon');
 
+	/** funcion para cambiar el contenido del boton de theme */
   function toggleContentBtnTheme(theme: string) {
-    textSwitchTheme.innerText = theme === "dark" ? "Dark" : "Light";
+    textSwitchTheme.innerText = theme === 'dark' ? 'Dark' : 'Light';
 
-    if (theme === "dark") {
-      iconSwitchTheme.classList.remove("fa-sun-o");
-      iconSwitchTheme.classList.add("fa-moon-o");
+    if (theme === 'dark') {
+      iconSwitchTheme.classList.remove('fa-sun-o');
+      iconSwitchTheme.classList.add('fa-moon-o');
     } else {
-      iconSwitchTheme.classList.remove("fa-moon-o");
-      iconSwitchTheme.classList.add("fa-sun-o");
+      iconSwitchTheme.classList.remove('fa-moon-o');
+      iconSwitchTheme.classList.add('fa-sun-o');
     }
   }
 
-  /* funcion para el boton de cambiar theme */
+  /** funcion para el boton de cambiar theme */
   function toggleTheme() {
-    const currentTheme = document.documentElement.getAttribute("data-theme");
-    const newTheme = currentTheme === "dark" ? "light" : "dark";
-    document.documentElement.setAttribute("data-theme", newTheme);
-    localStorage.setItem("theme", newTheme);
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
     toggleContentBtnTheme(newTheme);
   }
 
-  switchTheme.addEventListener("click", toggleTheme);
+  switchTheme.addEventListener('click', toggleTheme);
 
-  /* funcion para guardar y cargar el tema en el local storage */
+  /** funcion para guardar y cargar el tema en el local storage */
   function loadTheme() {
-    const savedTheme = localStorage.getItem("theme") || "dark";
-    document.documentElement.setAttribute("data-theme", savedTheme);
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
     toggleContentBtnTheme(savedTheme);
   }
 
   loadTheme();
 </script>
 
-<nav>
-  <button id="btn-theme" class="boton boton--menu">
-    <span class="btn-theme__text"></span>
-    <i class="btn-theme__icon boton__icono fa" aria-hidden="true"></i>
-  </button>
+<nav class="nav flex md:gap-3 lg:gap-6">
+  <ul class="nav-items flex md:gap-3 lg:gap-6">
+  {
+    textLinks.map(({label, href})=>(
+      <li class="nav-items__item">
+        <a 
+          href={href}
+          aria-current={Astro.url.pathname === href}
+          class:list={[
+            'link',
+            {active: Astro.url.pathname === href || (href !== '/' && Astro.url.pathname.startsWith(href))}
+          ]}
+        >
+          {label}
+        </a>
+      </li>
+    ))
+  }
+  </ul>
 
-  <button id="boton-menu" class="boton boton--menu">
-    Menu
-    <i class="boton__icono fas fa-bars"></i>
+  <button id='btn-theme' class='boton boton--menu'>
+    <span class='btn-theme__text'></span>
+    <i class='btn-theme__icon boton__icono fa' aria-hidden='true'></i>
   </button>
 </nav>
 
@@ -78,11 +108,51 @@
   </div>
 </aside> -->
 
-<style lang="scss">
+<style lang='scss'>
   /*  :global([data-theme="light"]) {
     .boton {
-      color: var(--text-color);
-      outline: 1px solid var(--text-color);
+      color: var(--color-text);
+      outline: 1px solid var(--color-text);
     }
   } */
+
+  .nav{
+    &-items{  
+      &__item{
+        -webkit-clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+        clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+        background-color: transparent;
+        padding: 1px;
+
+        &:has(.link.active){
+          background-color: var(--color-main-2);
+        }
+        &:has(.link:hover, .link.active:hover){
+          background-color: var(--color-main-1);
+        }
+      }
+  
+      .link{
+        -webkit-clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+        clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+        font-size: 1rem;
+        font-weight:bold;
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        background-color: var(--color-bg);
+  
+        &.active{
+          //color: var(--color-main-2);
+        }
+        &:is(:hover, .active:hover){
+          background: linear-gradient(0deg, var(--color-main-1) 0%, color-mix(in srgb, var(--color-main-1) 75%, #000) 100%);
+          color: var(--color-bg);
+        }
+      }
+    }
+
+    #btn-theme{
+      margin-left: 1rem;
+    }
+  }
 </style>

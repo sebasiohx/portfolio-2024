@@ -1,35 +1,73 @@
 :root {
+  /* Text */
   --font-size: 16px;
-  --font-family: system-ui, sans-serif;
+  --font-family-1: Arial ,system-ui, sans-serif;
+  --font-family-2: "Times New Roman", serif;
+
+  /* Sizes */
+  --size-8px: 0.5rem;
+  --size-10px: 0.625rem;
+  --size-12px: 0.75rem;
+  --size-14px: 0.875rem;
+  --size-16px: 1rem;
+  --size-18px: 1.125rem;
+  --size-20px: 1.25rem;
+  --size-24px: 1.5rem;
+  --size-26px: 1.625rem;
+  --size-32px: 2rem;
+  --size-34px: 2.125rem;
+  --size-40px: 2.5rem;
+  --size-42px: 2.625rem;
+  --size-48px: 3rem;
+  --size-56px: 3.5rem;
+  --size-64px: 4rem;
+  --size-72px: 4.5rem;
+  --size-80px: 5rem;
+
+  /* Color tone */
+  --color-main-1-l1: color-mix(in srgb, var(--color-main-1) 25%, var(--color-text));
+  --color-main-1-l2: color-mix(in srgb, var(--color-main-1) 50%, var(--color-text));
+  --color-main-1-l3: color-mix(in srgb, var(--color-main-1) 75%, var(--color-text));
+  --color-main-1-d1: color-mix(in srgb, var(--color-main-1) 25%, var(--color-bg));
+  --color-main-1-d2: color-mix(in srgb, var(--color-main-1) 50%, var(--color-bg));
+  --color-main-1-d3: color-mix(in srgb, var(--color-main-1) 75%, var(--color-bg));
+  --color-main-2-l1: color-mix(in srgb, var(--color-main-2) 25%, var(--color-text));
+  --color-main-2-l2: color-mix(in srgb, var(--color-main-2) 50%, var(--color-text));
+  --color-main-2-l3: color-mix(in srgb, var(--color-main-2) 75%, var(--color-text));
+  --color-main-2-d1: color-mix(in srgb, var(--color-main-2) 25%, var(--color-bg));
+  --color-main-2-d2: color-mix(in srgb, var(--color-main-2) 50%, var(--color-bg));
+  --color-main-2-d3: color-mix(in srgb, var(--color-main-2) 75%, var(--color-bg));
 }
 [data-theme="dark"] {
   color-scheme: dark;
 
-  --main-color: #00facb;
-  --bg-color: #161B33;
-  --text-color: #E4E9F3;
+  --color-main-1: #92FFB2;
+  --color-main-2: #6648F3;
+  --color-bg: #090b11;
+  --color-text: #E4E9F3;
 }
 [data-theme="light"] {
   color-scheme: light;
 
-  --main-color: #50fa00;
-  --bg-color: #E4E9F3;
-  --text-color: #161B33;
+  --color-main-1: #6648F3;
+  --color-main-2: #50fa00;
+  --color-bg: #E4E9F3;
+  --color-text: #090b11;
 }
 html {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  font-family: var(--font-family);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-family-1);
   font-size: var(--font-size);
 }
 code {
   font-family:
     Menlo,
     Monaco,
-    Lucida Console,
-    Liberation Mono,
-    DejaVu Sans Mono,
-    Bitstream Vera Sans Mono,
-    Courier New,
+    "Lucida Console",
+    "Liberation Mono",
+    "DejaVu Sans Mono",
+    "Bitstream Vera Sans Mono",
+    "Courier New",
     monospace;
 }
