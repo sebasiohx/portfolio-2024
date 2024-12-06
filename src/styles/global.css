@@ -31,6 +31,7 @@
   --color-main-1-d1: color-mix(in srgb, var(--color-main-1) 25%, var(--color-bg));
   --color-main-1-d2: color-mix(in srgb, var(--color-main-1) 50%, var(--color-bg));
   --color-main-1-d3: color-mix(in srgb, var(--color-main-1) 75%, var(--color-bg));
+  
   --color-main-2-l1: color-mix(in srgb, var(--color-main-2) 25%, var(--color-text));
   --color-main-2-l2: color-mix(in srgb, var(--color-main-2) 50%, var(--color-text));
   --color-main-2-l3: color-mix(in srgb, var(--color-main-2) 75%, var(--color-text));
@@ -57,7 +58,7 @@
 html {
   background-color: var(--color-bg);
   color: var(--color-text);
-  font-family: var(--font-family-1);
+  /* font-family: var(--font-family-1); */
   font-size: var(--font-size);
 }
 code {

@@ -1,0 +1,110 @@
+---
+interface Props {
+  type: 'anchor' | 'button';
+  id?: string;
+  href?: string;
+  target?: string;
+  isActive?: boolean;
+  class?: string;
+}
+
+const {
+  type = 'anchor',
+  id,
+  href,
+  target = '_self',
+  isActive = false,
+  class: className = '',
+} = Astro.props;
+---
+
+{
+  type == 'anchor' && (
+    <a
+      id={id}
+      href={href}
+      target={target}
+      aria-current={isActive}
+      class='btn-bg'
+    >
+      <span class:list={['btn-content', className, { active: isActive }]}>
+        <slot />
+      </span>
+    </a>
+  )
+}
+
+{
+  type == 'button' && (
+    <button id={id} class='btn-bg'>
+      <span class:list={['btn-content', className, { active: isActive }]}>
+        <slot />
+      </span>
+    </button>
+  )
+}
+
+<style>
+  /* background */
+  .btn-bg {
+    all: unset;
+    cursor: pointer;
+    -webkit-clip-path: polygon(
+      10px 0,
+      100% 0,
+      100% calc(100% - 10px),
+      calc(100% - 10px) 100%,
+      0 100%,
+      0 10px
+    );
+    clip-path: polygon(
+      10px 0,
+      100% 0,
+      100% calc(100% - 10px),
+      calc(100% - 10px) 100%,
+      0 100%,
+      0 10px
+    );
+    background-color: transparent;
+    padding: 1px;
+    display: inline-block;
+  }
+  .btn-bg:has(.btn-content.active) {
+    background-color: var(--color-main-2);
+  }
+  .btn-bg:has(.btn-content:hover, .btn-content.active:hover) {
+    background-color: var(--color-main-1);
+  }
+  /* content */
+  .btn-content {
+    -webkit-clip-path: polygon(
+      10px 0,
+      100% 0,
+      100% calc(100% - 10px),
+      calc(100% - 10px) 100%,
+      0 100%,
+      0 10px
+    );
+    clip-path: polygon(
+      10px 0,
+      100% 0,
+      100% calc(100% - 10px),
+      calc(100% - 10px) 100%,
+      0 100%,
+      0 10px
+    );
+    /* font-size: 1rem; */
+    font-weight: bold;
+    display: flex;
+    padding: 0.5rem 1rem;
+    background-color: var(--color-bg);
+  }
+  .btn-content:is(:hover, .active:hover) {
+    background: linear-gradient(
+      0deg,
+      var(--color-main-1) 0%,
+      var(--color-main-1-d3) 100%
+    );
+    color: var(--color-bg);
+  }
+</style>

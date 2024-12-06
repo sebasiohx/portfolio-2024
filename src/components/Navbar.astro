@@ -1,4 +1,6 @@
 ---
+import ButtonMain from './ButtonMain.astro';
+
 /** Menu items */
 const textLinks: { label: string; href: string }[] = [
   { label: 'Home', href: '/' },
@@ -57,16 +59,13 @@ const iconsLinks: { label: string; href: string; icon: string }[] = [
   {
     textLinks.map(({label, href})=>(
       <li class="nav-items__item">
-        <a 
+        <ButtonMain 
+          type="anchor"
           href={href}
-          aria-current={Astro.url.pathname === href}
-          class:list={[
-            'link',
-            {active: Astro.url.pathname === href || (href !== '/' && Astro.url.pathname.startsWith(href))}
-          ]}
+          isActive={Astro.url.pathname === href || (href !== '/' && Astro.url.pathname.startsWith(href))}
         >
           {label}
-        </a>
+        </ButtonMain>
       </li>
     ))
   }
@@ -117,40 +116,6 @@ const iconsLinks: { label: string; href: string; icon: string }[] = [
   } */
 
   .nav{
-    &-items{  
-      &__item{
-        -webkit-clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
-        clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
-        background-color: transparent;
-        padding: 1px;
-
-        &:has(.link.active){
-          background-color: var(--color-main-2);
-        }
-        &:has(.link:hover, .link.active:hover){
-          background-color: var(--color-main-1);
-        }
-      }
-  
-      .link{
-        -webkit-clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
-        clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
-        font-size: 1rem;
-        font-weight:bold;
-        display: inline-block;
-        padding: 0.5rem 1rem;
-        background-color: var(--color-bg);
-  
-        &.active{
-          //color: var(--color-main-2);
-        }
-        &:is(:hover, .active:hover){
-          background: linear-gradient(0deg, var(--color-main-1) 0%, color-mix(in srgb, var(--color-main-1) 75%, #000) 100%);
-          color: var(--color-bg);
-        }
-      }
-    }
-
     #btn-theme{
       margin-left: 1rem;
     }
