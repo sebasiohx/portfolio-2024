@@ -1,17 +1,15 @@
 ---
-import ButtonMain from './ButtonMain.astro';
-
 /** Menu items */
 const textLinks: { label: string; href: string }[] = [
-  { label: 'Home', href: '/' },
   { label: 'Portafolio', href: '/portfolio/' },
   { label: 'Acerca de mi', href: '/about/' },
+  { label: 'Experimentos', href: '/' },
 ];
 
 /** Menu icons */
 const iconsLinks: { label: string; href: string; icon: string }[] = [
-  { label: 'GitHub', href: 'https://github.com/me', icon: 'github-logo' },
-	{ label: 'CodePen', href: 'https://codepen.io/me', icon: 'codepen-logo' },
+  { label: 'GitHub', href: 'https://github.com/me', icon: 'fa-github' },
+  { label: 'CodePen', href: 'https://codepen.io/me', icon: 'fa-codepen' },
 ];
 ---
 
@@ -20,7 +18,7 @@ const iconsLinks: { label: string; href: string; icon: string }[] = [
   const textSwitchTheme: any = document.querySelector('.btn-theme__text');
   const iconSwitchTheme: any = document.querySelector('.btn-theme__icon');
 
-	/** funcion para cambiar el contenido del boton de theme */
+  /** funcion para cambiar el contenido del boton de theme */
   function toggleContentBtnTheme(theme: string) {
     textSwitchTheme.innerText = theme === 'dark' ? 'Dark' : 'Light';
 
@@ -54,70 +52,543 @@ const iconsLinks: { label: string; href: string; icon: string }[] = [
   loadTheme();
 </script>
 
-<nav class="nav flex md:gap-3 lg:gap-6">
-  <ul class="nav-items flex md:gap-3 lg:gap-6">
-  {
-    textLinks.map(({label, href})=>(
-      <li class="nav-items__item">
-        <ButtonMain 
-          type="anchor"
+<nav class='navbar flex items-center gap-4 lg:gap-6'>
+  <ul class='nav-items hidden md:flex md:gap-4 lg:gap-6'>
+    {
+      textLinks.map(({ label, href }) => (
+        <li class='nav-items__item'>
+          <span class="triangle triangle-1"></span>
+          <a 
           href={href}
-          isActive={Astro.url.pathname === href || (href !== '/' && Astro.url.pathname.startsWith(href))}
-        >
-          {label}
-        </ButtonMain>
-      </li>
-    ))
-  }
+          class:list={['nav-items__link', {'active': Astro.url.pathname === href ||
+          (href !== '/' && Astro.url.pathname.startsWith(href))}]}
+          >
+            {label}
+
+            <span class="cross-decoration cross-decoration-1">+</span>
+            <span class="cross-decoration cross-decoration-2">+</span>
+            <span class="cross-decoration cross-decoration-3">+</span>
+          </a>
+          <span class="triangle triangle-2"></span>
+        </li>
+      ))
+    }
+  </ul>
+  <ul class='nav-icons hidden md:flex md:gap-5 lg:gap-6'>
+    {
+      iconsLinks.map(({ label, href, icon }) => (
+        <li class='grow'>
+          <a class='nav-icons__link-icon' href={href}>
+            <span class='sr-only'>{label}</span>
+            <i class:list={['fa', 'fa-brands', icon]} />
+          </a>
+        </li>
+      ))
+    }
   </ul>
 
-  <button id='btn-theme' class='boton boton--menu'>
+  <button id='btn-theme'>
     <span class='btn-theme__text'></span>
     <i class='btn-theme__icon boton__icono fa' aria-hidden='true'></i>
   </button>
+
+  <button class='menu-burguer flex md:hidden'>
+    <div class='menu-line'></div>
+    <div class='menu-line'></div>
+    <div class='menu-line'></div>
+  </button>
 </nav>
-
-<!-- <aside id="menu">
-  <div class="menu__cierre">
-    <img src="img/close.png" alt="cerrar menu" class="menu__cierre-img" />
-  </div>
-  <nav class="menu__container">
-    <a href="index.html" class="menu__link" data-menu-icono="0"> Home </a>
-    <a href="portafolio.html" class="menu__link" data-menu-icono="1">
-      Portafolio
-    </a>
-    <a
-      href="https://codepen.io/Solate"
-      class="menu__link"
-      target="_blank"
-      rel="noopener noreferrer"
-      data-menu-icono="2"
-    >
-      Experimentos
-    </a>
-    <a href="acerca-de-mi.html" class="menu__link" data-menu-icono="3">
-      Acerca de mi
-    </a>
-  </nav>
-  <div class="menu__iconos">
-    <i class="menu__icono menu__icono--0 fas fa-home"></i>
-    <i class="menu__icono menu__icono--1 fas fa-suitcase"></i>
-    <i class="menu__icono menu__icono--2 fas fa-flask"></i>
-    <i class="menu__icono menu__icono--3 fas fa-running"></i>
-  </div>
-</aside> -->
-
+<!-- Navbar links -->
 <style lang='scss'>
-  /*  :global([data-theme="light"]) {
+  .navbar{
+    .nav-items{
+      &__item{
+        // display: flex;
+        // flex-direction: column;
+        // align-items: center;
+        // gap: 8px;
+        display: grid;
+        justify-items: center;
+        gap: 8px;
+  
+        .triangle{
+          //display: none;
+          visibility: hidden;
+          width: 0;
+          height: 0;
+          border-top: solid 8px var(--color-main-3);
+          border-right: solid 5px transparent;
+          border-left: solid 5px transparent;
+          // position: absolute;
+          // top: -18px;
+          // left: 45%;
+          opacity: 0.6;
+          animation: blink-in 0.3s infinite cubic-bezier(1,0,0,1) forwards;
+
+          &-1{
+            
+          }
+
+          &-2{
+            transform: rotate(180deg);
+          }
+        }
+
+        &:has(.nav-items__link:hover){
+          .triangle{
+            //display: block;
+            visibility: visible;
+          }
+        }
+      }
+
+      &__link{
+        border-bottom: 1px solid var(--color-main-1);
+        position: relative;
+        padding: 8px 16px;
+        display: inline-block;
+        transition: 0.35s;
+
+        /* &::before {
+          content: '';
+          display: none;
+          width: 0;
+          height: 0;
+          border-top: solid 8px var(--color-main-3);
+          border-right: solid 5px transparent;
+          border-left: solid 5px transparent;
+          position: absolute;
+          top: -18px;
+          left: 45%;
+          opacity: 0.6;
+          animation: blink-in 0.3s infinite cubic-bezier(1,0,0,1) forwards;
+        } */
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -1px;
+          -moz-right: 0px;
+          right: 0px;
+          display: block;
+          width: 15px;
+          height: 15px;
+          background-color: var(--color-main-1);
+          clip-path: polygon(66% 0, 100% 0, 100% 100%, 0% 100%);
+          transition: opacity .3s, transform .3s cubic-bezier(.455, .03, .515, .955);
+        }
+
+        &.active{
+          border-bottom: 1px solid var(--color-main-2);
+          &::after{
+            background-color: var(--color-main-2);
+          }
+        }
+
+        .cross-decoration{
+          opacity: 0;
+          width: .5rem;
+          height: .5rem;
+          transition: opacity .3s, transform .3s;
+          position: absolute;
+          transform: translate(0);
+          color: var(--color-main-3);
+          transform: translate(0px, 0px);
+
+          &-1{
+            top: 0;
+            left: 0;
+          }
+          &-2{
+            top: 0;
+            right: 0;
+          }
+          &-3{
+            bottom: 12px;
+            left: 0;
+          }
+        }
+
+        &:hover{
+          border-color: var(--color-main-3);
+          background-color: color-mix(in srgb, var(--color-main-3) 50%, transparent 80%);
+          box-shadow: var(--color-main-3) 0px 3px 10px;
+          transition: 300ms;
+
+          &::before{
+            display: block;
+          }
+
+          &::after{
+            background-color: var(--color-main-3);
+            transition: opacity .3s, transform .3s;
+          }
+
+          .cross-decoration{
+            opacity: 1;
+            //transform: translate(-.5rem, -.5rem);
+
+            &-1{
+              transform: translate(-6px,-15px);
+            }
+            &-2{
+              transform: translate(2px, -15px);
+            }
+            &-3{
+              transform: translate(-6px, 5px);
+            }
+          }
+        }
+      }
+    }
+  }
+</style>
+<!-- menu burguer -->
+<script>
+  const iconMenu: any = document.querySelector('.menu-burguer');
+  const menuMobile: any = document.getElementById('menu-mobile-aside');
+
+  iconMenu.addEventListener(
+    'click',
+    () => {
+      if (iconMenu.classList.contains('open')) {
+        iconMenu.classList.remove('open');
+        menuMobile.classList.remove('open');
+      } else {
+        iconMenu.classList.add('open');
+        menuMobile.classList.add('open');
+      }
+    },
+    false
+  );
+</script>
+<style>
+  .menu-burguer {
+    /* all: unset; */
+    /* display: flex; */
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5px;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    clip-path: polygon(
+      10px 0,
+      100% 0,
+      100% calc(100% - 10px),
+      calc(100% - 10px) 100%,
+      0 100%,
+      0 10px
+    );
+    background: linear-gradient(
+      0deg,
+      var(--color-main-1) 0%,
+      var(--color-main-1-d3) 100%
+    );
+  }
+
+  .menu-line {
+    height: 4px;
+    width: 24px;
+    background-color: var(--color-bg);
+    transition: all 250ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  }
+
+  .menu-line:first-child {
+    animation: firstLinetoClose 240ms cubic-bezier(0.23, 0.95, 0.58, 1.37);
+  }
+
+  .open .menu-line:first-child {
+    animation: firstLinetoOpen 240ms cubic-bezier(0.23, 0.95, 0.58, 1.37);
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes firstLinetoOpen {
+    0% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(12px);
+    }
+
+    100% {
+      transform: translateY(9px) rotate(45deg);
+    }
+  }
+
+  @keyframes firstLinetoClose {
+    0% {
+      transform: translateY(9px) rotate(0);
+    }
+
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  .open .menu-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-line:last-child {
+    animation: lastLinetoClose 240ms cubic-bezier(0.23, 0.95, 0.58, 1.37);
+  }
+
+  .open .menu-line:last-child {
+    animation: lastLinetoOpen 240ms cubic-bezier(0.23, 0.95, 0.58, 1.37);
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes lastLinetoOpen {
+    0% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-12px);
+    }
+
+    100% {
+      transform: translateY(-10px) rotate(-45deg);
+    }
+  }
+
+  @keyframes lastLinetoClose {
+    0% {
+      transform: translateY(-10px);
+    }
+
+    100% {
+      transform: translateY(0);
+    }
+  }
+</style>
+<!-- aside menu mobile -->
+<aside id='menu-mobile-aside' class='menu-mobile'>
+  <div class='container mx-auto p-4'>
+    <h3 class='menu-mobile__title'>Menú</h3>
+    <nav class='menu-mobile__nav mb-8'>
+      {
+        textLinks.map(({ label, href }) => (
+          <a
+            class:list={[
+              'menu-mobile__link',
+              {
+                active:
+                  Astro.url.pathname === href ||
+                  (href !== '/' && Astro.url.pathname.startsWith(href)),
+              },
+            ]}
+            href={href}
+          >
+            {label}
+          </a>
+        ))
+      }
+    </nav>
+    <ul class='flex gap-8 justify-between'>
+      {
+        iconsLinks.map(({ label, href, icon }) => (
+          <li class='grow'>
+            <a class='menu-mobile__link-icon' href={href}>
+              <span class='sr-only'>{label}</span>
+              <i class:list={['fa', 'fa-brands', icon]} />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <svg
+      version='1.1'
+      id='Layer_1'
+      class='menu-mobile__svg'
+      xmlns='http://www.w3.org/2000/svg'
+      xmlns:xlink='http://www.w3.org/1999/xlink'
+      x='0px'
+      y='0px'
+      viewBox='0 0 100 100'
+      enable-background='new 0 0 100 100'
+      xml:space='preserve'
+    >
+      <rect
+        class='fill-color'
+        width='3'
+        height='100'
+        transform='translate(0) rotate(180 3 50)'
+      >
+        <animate
+          attributeName='height'
+          attributeType='XML'
+          dur='1s'
+          values='30; 100; 30'
+          repeatCount='indefinite'></animate>
+      </rect>
+      <rect
+        x='17'
+        class='fill-color'
+        width='3'
+        height='100'
+        transform='translate(0) rotate(180 20 50)'
+      >
+        <animate
+          attributeName='height'
+          attributeType='XML'
+          dur='1s'
+          values='30; 100; 30'
+          repeatCount='indefinite'
+          begin='0.1s'></animate>
+      </rect>
+      <rect
+        x='40'
+        class='fill-color'
+        width='3'
+        height='100'
+        transform='translate(0) rotate(180 40 50)'
+      >
+        <animate
+          attributeName='height'
+          attributeType='XML'
+          dur='1s'
+          values='30; 100; 30'
+          repeatCount='indefinite'
+          begin='0.3s'></animate>
+      </rect>
+      <rect
+        x='60'
+        class='fill-color'
+        width='3'
+        height='100'
+        transform='translate(0) rotate(180 58 50)'
+      >
+        <animate
+          attributeName='height'
+          attributeType='XML'
+          dur='1s'
+          values='30; 100; 30'
+          repeatCount='indefinite'
+          begin='0.5s'></animate>
+      </rect>
+      <rect
+        x='80'
+        class='fill-color'
+        width='3'
+        height='100'
+        transform='translate(0) rotate(180 76 50)'
+      >
+        <animate
+          attributeName='height'
+          attributeType='XML'
+          dur='1s'
+          values='30; 100; 30'
+          repeatCount='indefinite'
+          begin='0.1s'></animate>
+      </rect>
+    </svg>
+  </div>
+</aside>
+<style lang='scss'>
+  .menu-mobile {
+    position: absolute;
+    inset: 82px 0 0 0;
+    z-index: 11;
+    height: calc(100vh - 82px);
+    width: 100%;
+    clip-path: polygon(0 38px, 6px 38px, 20px 18px, calc(0% + 105px) calc(0% + 18px), calc(0% + 130px) 0px, 100% 0px, 100% 100%, 0px 100%);
+    transform: translateX(100%);
+    transition: all 250ms;
+    /* Glassmorphism */
+    background-color: color-mix(in srgb, var(--color-bg) 30%, transparent 100%);
+    -webkit-backdrop-filter: blur(30px);
+    backdrop-filter: blur(30px);
+
+    &.open {
+      transform: translateX(0%);
+    }
+
+    &__title {
+      text-align: right;
+      font-size: 24px;
+      font-weight: bold;
+      padding-right: 18px;
+      margin-bottom: 32px;
+      text-transform: uppercase;
+      font-family: var(--font-family-2);
+      transform: scaleY(1.2);
+      text-shadow: var(--color-main-1) 1px 0px 4px;
+    }
+
+    &__nav {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__link {
+      text-align: right;
+      padding: 20px;
+      border-bottom: 2px solid var(--color-main-2);
+      position: relative;
+      font-size: var(--size-18px);
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        display: block;
+        width: 15px;
+        height: 15px;
+        background-color: var(--color-main-2);
+        clip-path: polygon(66% 0, 100% 0, 100% 100%, 0% 100%);
+      }
+
+      &.active {
+        background-color: color-mix(
+          in srgb,
+          var(--color-main-1) 20%,
+          transparent 100%
+        );
+        border-bottom-color: var(--color-main-1);
+        box-shadow: var(--color-main-1) 1px 0px 1px;
+
+        &::after {
+          background-color: var(--color-main-1);
+        }
+      }
+    }
+
+    &__link-icon {
+      display: block;
+      border: 2px solid var(--color-main-2);
+      text-align: center;
+      font-size: var(--size-26px);
+      height: 50px;
+      align-content: center;
+    }
+    &__svg {
+      width: 90px;
+      position: fixed;
+      bottom: 16px;
+      right: 16px;
+      opacity: 0.5;
+    }
+  }
+
+  .fill-color {
+    fill: var(--color-main-1);
+  }
+
+  :global([data-theme='light']) {
+    .menu-mobile__title {
+      text-shadow: var(--color-main-1) 1px 0px 2px;
+    }
+  }
+</style>
+
+<!-- <style lang='scss'>
+  :global([data-theme="light"]) {
     .boton {
       color: var(--color-text);
       outline: 1px solid var(--color-text);
     }
-  } */
-
-  .nav{
-    #btn-theme{
-      margin-left: 1rem;
-    }
   }
-</style>
+</style> -->

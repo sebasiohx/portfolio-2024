@@ -44,6 +44,7 @@
 
   --color-main-1: #92FFB2;
   --color-main-2: #6648F3;
+  --color-main-3: #ffaa00;
   --color-bg: #090b11;
   --color-text: #E4E9F3;
 }
@@ -52,6 +53,7 @@
 
   --color-main-1: #6648F3;
   --color-main-2: #50fa00;
+  --color-main-3: #ffaa00;
   --color-bg: #E4E9F3;
   --color-text: #090b11;
 }
@@ -71,4 +73,29 @@ code {
     "Bitstream Vera Sans Mono",
     "Courier New",
     monospace;
+}
+
+.bgc-gradient-1{
+  background-color: var(--color-main-1-d3);
+}
+
+@media (min-width: 1536px) {
+  .container {
+    /* max-width: 1536px; */
+    max-width: 1280px;
+  }
+}
+
+@keyframes blink-in {
+  0%,30%,60% {
+      opacity: 0
+  }
+
+  15%,45%,75%,to {
+      opacity: 1
+  }
+}
+
+.ejemplpo-bg-gradiente{
+  background: repeating-linear-gradient(115deg, var(--color-bg), var(--color-bg) 10px, var(--color-bg) 20px, var(--color-main-1) 21px, var(--color-main-1) 40px, var(--color-main-1) 41px);
 }

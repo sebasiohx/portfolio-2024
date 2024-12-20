@@ -1,100 +1,246 @@
 ---
-const isIndex = Astro.url.pathname === "/";
+const isIndex = Astro.url.pathname === '/';
 import Navbar from './Navbar.astro';
 ---
 
 <script>
   /* funcion para el comportamiento del header segun este en el index o no */
+  const headerCSS: any = document.querySelector('#Header')?.classList;
   const headerClasses = () => {
-    let headerCSS: any = document.querySelector(".Header")?.classList;
-
-    document.addEventListener('scroll', ()=>{
+    document.addEventListener('scroll', () => {
       let altura: number = window.scrollY;
-  
-      if(headerCSS.contains('Header--home')){
-        if (altura > 0 && altura < 730) {
-            headerCSS.add("Header--estrecho");
-            headerCSS.remove("Header--bg");
-          } else if (altura >= 730) {
-            headerCSS.add("Header--bg");
-          } else {
-            headerCSS.remove("Header--estrecho", "Header--bg");
-          }
-      } else {
-        if (altura > 250) {
-            headerCSS.add("Header--estrecho", "Header--bg");
-          } else {
-            headerCSS.remove("Header--estrecho", "Header--bg");
-          }
-      }
-    })
-  }
 
-	headerClasses();
+      if (headerCSS.contains('Header--home')) {
+        if (altura >= 0 && altura < 730) {
+          headerCSS.add('Header--big');
+        } else {
+          headerCSS.remove('Header--big');
+        }
+      } else {
+        if (altura >= 250) {
+          headerCSS.add('Header--big');
+        } else {
+          headerCSS.remove('Header--big');
+        }
+      }
+    });
+  };
+
+  headerClasses();
 </script>
 
+<header
+  id='Header'
+  class:list={['Header Header--big', { 'Header--home': isIndex }]}
+>
+  <div
+    class='Header__content container mx-auto px-4 flex items-center justify-end'>
+    <div class="Header__logo-content">
+      <a href='/' class='Header__logo'>
+        <img
+          class='Header__logo-img'
+          src='/assets/logo-so.svg'
+          alt='logo Sebaolate'
+        />
+      </a>
 
-<header id="Header" class:list={['Header', {'Header--home': isIndex}]}>
-  <div class="container mx-auto px-4 flex items-center justify-between">
-    <a href="/" class="Header__logo">
-      <img
-        class="Header__logo-img"
-        src="/public/assets/logo-so.svg"
-        alt="logo Sebaolate"
-      />
-    </a>
+      <span class="logo__decoration-1"></span>
+      <span class="logo__decoration-2"></span>
+      <div class="column-decoration">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
 
     <Navbar />
   </div>
 </header>
 
-<style lang="scss">
+<style lang='scss'>
   .Header {
-    background-color: transparent;
-    position: fixed; //fixed
-    display: block;
-    height: 138px;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     z-index: 10;
-    top: 0;
-    overflow: hidden;
-    transition: 0.35s;
 
-    &--estrecho {
-      height: 100px;
-
-      .Header__logo {
-        width: 225px;
-        padding-top: 28px;
-      }
+    /* Glassmorphism */
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      z-index: -1;
+      //border-top: 2px solid var(--color-main-1);
+      border-bottom: 2px solid var(--color-main-1);
+      transition: 0.35s;
+    }
+    &::after{
+      content: '////////////';
+      display: block;
+      position: absolute;
+      width: 20px;
+      height: 16px;
+      left: 124px;
+      bottom: -18px;
+      font-size: 12px;
+      color: var(--color-main-1);
+      transform: skewX(-42deg);
+      font-weight: bold;
+      letter-spacing: 3px;
     }
 
-    &--bg {
-      background-color: var(--color-bg);
-      height: 80px;
+    .logo__decoration-1{
+      position: absolute;
+      top: 0px;
+      left: 128px;
+      background-color: var(--color-main-1);
+      width: 40px;
+      height: 30px;
+      clip-path: polygon(0 0, 100% 0, 46% 100%, 0% 100%);
+    }
+    .logo__decoration-2{
+      position: absolute;
+      bottom: -36px;
+      left: 0;
+      background-color: var(--color-main-1);
+      width: 20px;
+      height: 20px;
+      clip-path: polygon(0 0, 100% 0, 34% 100%, 0% 100%);
+    }
 
-      .Header__logo {
-        width: 145px;
-        padding: 25px;
+    &__content {
+      height: 82px;
+      transition: 0.35s;
+    }
+
+    &__logo-content{
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      .logo__decoration-1{
+        position: absolute;
+        top: 0px;
+        left: 130px;
+        background-color: var(--color-main-1);
+        width: 25px;
+        height: 30px;
+        clip-path: polygon(0 0, 100% 0, 46% 100%, 0% 100%);
+      }
+      .logo__decoration-2{
+        position: absolute;
+        bottom: -120px;
+        left: 0;
+        background-color: var(--color-main-1);
+        width: 20px;
+        height: 20px;
+        clip-path: polygon(0 0, 100% 0, 34% 100%, 0% 100%);
+      }
+      .column-decoration {
+        position: absolute;
+        top: 0;
+        left: 55px;
+        width: fit-content;
+        height: 82px;
+        display: none;
+        padding-bottom: 5px;
+        gap: 6px;
+        z-index: -1;
+      }
+      .bar {
+        width: 25px;
+        height: 74px;
+        background-color: var(--color-main-1);
+        transform: skewX(-20deg);
+
+        &:nth-last-child(1){
+          height: 50px;
+          margin-left: 6px;
+          background-color: transparent;
+          border: 2px solid var(--color-main-1);
+        }
+        &:nth-last-child(2){
+          background-color: transparent;
+          border: 2px solid var(--color-main-1);
+        }
       }
     }
 
     &__logo {
-      display: block;
+      display: flex;
       background-color: var(--color-main-1);
-      padding: 35px 40px;
-      width: 276px;
-      //height: 140px;
+      padding: 16px;
+      clip-path: polygon(0% 0%, 100% 0, 100% 82%, 80% 100%, 0% 100%);
+      position: absolute;
+      width: 130px;
+      height: 100px;
+      top: 0;
+      left: 0;
       transition: 0.35s;
 
-      &:hover {
-        background-color: color-mix(in srgb, var(--color-main-2), #000 15%);
-        transition: 0.35s;
+      &-img {
+        display: block;
       }
     }
 
-    &__logo-img {
-      width: 100%;
+    @media screen and (width >= 768px){
+      &__logo-content{
+        .logo__decoration-1{
+          display: none;
+        }
+        .column-decoration {
+          display: flex;
+        }
+      }
+    }
+    @media screen and (width >= 900px){
+      &__logo-content{
+        .column-decoration {
+          left: 117px;
+        }
+      }
+    }
+
+    @media screen and (width >= 1024px) {
+      &--big {
+        &::before {
+          //width: 0%;
+          transition: 0.35s;
+        }
+        .Header__content {
+          height: 115px;
+          transition: 0.35s;
+        }
+
+        .Header__logo {
+          width: 190px;
+          height: 120px;
+          padding: 30px;
+          transition: 0.35s;
+        }
+      }
+    }
+    @media screen and (width >= 1280px) {
+      &--big {
+        .Header__content {
+          height: 115px;
+          transition: 0.35s;
+        }
+
+        .Header__logo {
+          width: 225px;
+          height: 150px;
+          padding: 38px;
+          transition: 0.35s;
+          clip-path: polygon(0% 0%,100% 0,100% calc(100% - 35px),calc(100% - 55px) 100%,0% 100%);
+        }
+      }
     }
   }
 </style>
