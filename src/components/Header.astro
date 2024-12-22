@@ -90,28 +90,10 @@ import Navbar from './Navbar.astro';
       bottom: -18px;
       font-size: 12px;
       color: var(--color-main-1);
-      transform: skewX(-42deg);
+      transform: skewX(-42deg) translateX(0px);
       font-weight: bold;
       letter-spacing: 3px;
-    }
-
-    .logo__decoration-1{
-      position: absolute;
-      top: 0px;
-      left: 128px;
-      background-color: var(--color-main-1);
-      width: 40px;
-      height: 30px;
-      clip-path: polygon(0 0, 100% 0, 46% 100%, 0% 100%);
-    }
-    .logo__decoration-2{
-      position: absolute;
-      bottom: -36px;
-      left: 0;
-      background-color: var(--color-main-1);
-      width: 20px;
-      height: 20px;
-      clip-path: polygon(0 0, 100% 0, 34% 100%, 0% 100%);
+      transition: 0.35s;
     }
 
     &__content {
@@ -141,17 +123,21 @@ import Navbar from './Navbar.astro';
         width: 20px;
         height: 20px;
         clip-path: polygon(0 0, 100% 0, 34% 100%, 0% 100%);
+        transform: translateY(0px);
+        transition: 0.35s;
       }
       .column-decoration {
         position: absolute;
         top: 0;
-        left: 55px;
+        left: 0;
         width: fit-content;
         height: 82px;
         display: none;
         padding-bottom: 5px;
         gap: 6px;
         z-index: -1;
+        transform: translateX(55px);
+        transition: 0.35s;
       }
       .bar {
         width: 25px;
@@ -189,56 +175,75 @@ import Navbar from './Navbar.astro';
       }
     }
 
-    @media screen and (width >= 768px){
+    @media screen and (width >= 900px){
       &__logo-content{
         .logo__decoration-1{
           display: none;
         }
         .column-decoration {
           display: flex;
-        }
-      }
-    }
-    @media screen and (width >= 900px){
-      &__logo-content{
-        .column-decoration {
-          left: 117px;
+          transform: translateX(55px);
+          transition: 0.35s;
         }
       }
     }
 
     @media screen and (width >= 1024px) {
+      &__logo-content{
+        .column-decoration {
+          transform: translateX(117px);
+        }
+      }
       &--big {
         &::before {
           //width: 0%;
           transition: 0.35s;
         }
+        &::after{
+          transform: skewX(-42deg) translateX(-60px);
+        }
         .Header__content {
-          height: 115px;
+          height: 100px;
           transition: 0.35s;
         }
-
         .Header__logo {
           width: 190px;
           height: 120px;
           padding: 30px;
           transition: 0.35s;
         }
+        .Header__logo-content{
+          .logo__decoration-2{
+            transform: translateY(20px);
+          }
+          .column-decoration {
+            transform: translateX(176px);
+          }
+        }
       }
     }
-    @media screen and (width >= 1280px) {
+    @media screen and (width >= 1920px) {
       &--big {
         .Header__content {
           height: 115px;
           transition: 0.35s;
         }
-
         .Header__logo {
-          width: 225px;
+          width: 240px;
           height: 150px;
           padding: 38px;
           transition: 0.35s;
           clip-path: polygon(0% 0%,100% 0,100% calc(100% - 35px),calc(100% - 55px) 100%,0% 100%);
+        }
+        .Header__logo-content{
+          .logo__decoration-2{
+            transform: translateY(80px);
+            width: 50px;
+            height: 50px;
+          }
+          .column-decoration {
+            transform: translateX(226px);
+          }
         }
       }
     }

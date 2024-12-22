@@ -96,6 +96,13 @@ code {
   }
 }
 
-.ejemplpo-bg-gradiente{
+.ejemplpo-bg-gradiente-repeat{
   background: repeating-linear-gradient(115deg, var(--color-bg), var(--color-bg) 10px, var(--color-bg) 20px, var(--color-main-1) 21px, var(--color-main-1) 40px, var(--color-main-1) 41px);
 }
+
+/* :global([data-theme="light"]) {
+  .boton {
+    color: var(--color-text);
+    outline: 1px solid var(--color-text);
+  }
+} */
