@@ -26,6 +26,32 @@ import Layout from '../layouts/Layout.astro';
 			}
 	</style>
 
+	<div class="gradient-bg"></div>
+
+	<style>
+		 /* Gradiente animado */
+		.gradient-bg {
+      height: 200px;
+      width: 200px;
+      background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+      background-size: 300% 300%; /* Tamaño grande para animación */
+      animation: moveGradient 6s ease infinite; /* Animación */
+    }
+
+    /* Definición de la animación */
+    @keyframes moveGradient {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+	</style>
+
 		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, qui dignissimos a iusto necessitatibus culpa fugiat tempore harum doloremque nam quo repellendus, quaerat ratione enim pariatur veritatis sapiente tempora laudantium.
 		Mollitia iste itaque libero repudiandae molestias sequi, quam laudantium dolor sapiente ipsa quibusdam aut velit minima eaque quae voluptate dolorum explicabo aspernatur hic deleniti quidem natus ullam doloribus! Dolore, porro?
 		Facilis cumque itaque ab distinctio, voluptatum quasi blanditiis, expedita corrupti culpa quibusdam incidunt est odio sed cum ipsum. Minus a quia saepe et harum eveniet esse quas eos ea tenetur!

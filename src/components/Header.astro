@@ -34,28 +34,59 @@ import Navbar from './Navbar.astro';
   class:list={['Header Header--big', { 'Header--home': isIndex }]}
 >
   <div
-    class='Header__content container mx-auto px-4 flex items-center justify-end'>
-    <div class="Header__logo-content">
-      <a href='/' class='Header__logo'>
-        <img
+    class='Header__content container mx-auto px-4 flex items-center justify-end'
+  >
+    <div class='Header__logo-content'>
+      <a href='/' class='Header__logo-link' tabindex="-1">
+        <svg
+          id='logo-SO'
+          data-name='logo-SO'
+          xmlns='http://www.w3.org/2000/svg'
+          viewBox='0 0 98 36'
           class='Header__logo-img'
-          src='/assets/logo-so.svg'
-          alt='logo Sebaolate'
-        />
+        >
+          <path
+            d='M3.9,35.29,1.15,31.61,3.08,20.7l-.67-.79H.32L1,16.09H3.08L4,15.3,5.93,4.39,10,.71h6.56l-.7,3.94H12.26l-.86.77L9.57,15.83,7,18,8.78,20.2,7,30.58l.59.77h3.62l-.7,3.94Z'
+          ></path>
+          <path
+            d='M14.91,29.09l.86-5h12.8L30,23l.47-2.72-1-1.16H19.39l-3-3.72,1.23-7,4.34-3.69H38.05l-.86,5H24.73l-1.4,1.16L23,12.94l1,1.16H34l3,3.68L35.7,25.41l-4.34,3.68Z'
+          ></path>
+          <path
+            d='M38.58,29.09l.93-5.2h5.81l-.93,5.2ZM40.71,17l.93-5.21h5.8L46.51,17Z'
+          ></path>
+          <path
+            d='M52,29.09l-3-3.68L52,8.34l4.34-3.69H70.75l3,3.69-3,17.07-4.34,3.68Zm4.61-4.71h7l1.36-1.16,2.25-12.7-1-1.16h-6.9l-1.39,1.16-2.26,12.7Z'
+          ></path>
+          <path
+            d='M71.67,32.74l3.09-8.85H81l-5.34,8.85ZM76,17l.93-5.21h5.8L81.75,17Z'
+          ></path>
+          <path
+            d='M81.75,35.29l.7-3.94h3.61l.87-.77,1.82-10.41L91.34,18,89.55,15.8,91.37,5.42l-.6-.77H87.16L87.85.71h6.57l2.75,3.68L95.25,15.3l.66.79H98l-.66,3.82H95.25l-.93.79L92.4,31.61l-4.08,3.68Z'
+          ></path>
+        </svg>
+
+        <span class='crosses-decoration'>
+          <span class='cross cross-1'>+</span>
+          <span class='cross cross-2'>+</span>
+          <span class='cross cross-3'>+</span>
+          <span class='cross cross-4'>+</span>
+        </span>
       </a>
 
-      <span class="logo__decoration-1"></span>
-      <span class="logo__decoration-2"></span>
-      <div class="column-decoration">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
+      <span class='logo__decoration-1'></span>
+      <span class='logo__decoration-2'></span>
+      <div class='column-decoration'>
+        <span class='bar'></span>
+        <span class='bar'></span>
+        <span class='bar'></span>
+        <span class='bar'></span>
+        <span class='bar'></span>
       </div>
     </div>
 
     <Navbar />
+
+    <div class='bar-right-decoration'></div>
   </div>
 </header>
 
@@ -67,20 +98,19 @@ import Navbar from './Navbar.astro';
     width: 100%;
     z-index: 10;
 
-    /* Glassmorphism */
     &::before {
       content: '';
       position: absolute;
       width: 100%;
       height: 100%;
+      /* Glassmorphism */
       -webkit-backdrop-filter: blur(10px);
       backdrop-filter: blur(10px);
       z-index: -1;
-      //border-top: 2px solid var(--color-main-1);
       border-bottom: 2px solid var(--color-main-1);
-      transition: 0.35s;
+      transition: 300ms;
     }
-    &::after{
+    &::after {
       content: '////////////';
       display: block;
       position: absolute;
@@ -93,20 +123,38 @@ import Navbar from './Navbar.astro';
       transform: skewX(-42deg) translateX(0px);
       font-weight: bold;
       letter-spacing: 3px;
-      transition: 0.35s;
+      transition: 300ms;
     }
 
     &__content {
       height: 82px;
-      transition: 0.35s;
+      transition: 300ms;
+
+      .bar-right-decoration {
+        visibility: hidden;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 30px;
+        height: 98%;
+        background: repeating-linear-gradient(
+          150deg,
+          var(--color-bg),
+          var(--color-bg) 10px,
+          var(--color-main-1-d1) 12px,
+          var(--color-main-1) 11px,
+          var(--color-main-1) 24px,
+          var(--color-main-1-d1) 25px
+        );
+      }
     }
 
-    &__logo-content{
+    &__logo-content {
       position: absolute;
       top: 0;
       left: 0;
 
-      .logo__decoration-1{
+      .logo__decoration-1 {
         position: absolute;
         top: 0px;
         left: 130px;
@@ -115,7 +163,7 @@ import Navbar from './Navbar.astro';
         height: 30px;
         clip-path: polygon(0 0, 100% 0, 46% 100%, 0% 100%);
       }
-      .logo__decoration-2{
+      .logo__decoration-2 {
         position: absolute;
         bottom: -120px;
         left: 0;
@@ -124,7 +172,7 @@ import Navbar from './Navbar.astro';
         height: 20px;
         clip-path: polygon(0 0, 100% 0, 34% 100%, 0% 100%);
         transform: translateY(0px);
-        transition: 0.35s;
+        transition: 300ms;
       }
       .column-decoration {
         position: absolute;
@@ -132,64 +180,162 @@ import Navbar from './Navbar.astro';
         left: 0;
         width: fit-content;
         height: 82px;
-        display: none;
+        display: flex;
         padding-bottom: 5px;
         gap: 6px;
         z-index: -1;
-        transform: translateX(55px);
-        transition: 0.35s;
+        transform: translateX(54px);
+        transition: 300ms;
+        visibility: visible;
       }
       .bar {
         width: 25px;
         height: 74px;
         background-color: var(--color-main-1);
         transform: skewX(-20deg);
+        transition: 300ms;
 
-        &:nth-last-child(1){
+        &:nth-last-child(1) {
           height: 50px;
           margin-left: 6px;
           background-color: transparent;
           border: 2px solid var(--color-main-1);
         }
-        &:nth-last-child(2){
+        &:nth-last-child(2) {
           background-color: transparent;
           border: 2px solid var(--color-main-1);
         }
       }
     }
 
-    &__logo {
+    &__logo-link {
       display: flex;
-      background-color: var(--color-main-1);
-      padding: 16px;
+      background: linear-gradient(
+        45deg,
+        var(--color-main-1),
+        var(--color-main-1),
+        var(--color-main-1),
+        var(--color-main-1),
+        var(--color-main-1)
+      );
+      padding: 1rem;
       clip-path: polygon(0% 0%, 100% 0, 100% 82%, 80% 100%, 0% 100%);
       position: absolute;
+      z-index: 10;
       width: 130px;
       height: 100px;
       top: 0;
       left: 0;
-      transition: 0.35s;
+      transition: 300ms;
 
-      &-img {
-        display: block;
+      .crosses-decoration {
+        .cross {
+          color: var(--color-bg);
+          position: absolute;
+          transform: translate(0px, 0px);
+          opacity: 0;
+          transition: 300ms;
+
+          &-1 {
+            top: 0;
+            left: 0;
+          }
+          &-2 {
+            top: 0;
+            right: 0;
+          }
+          &-3 {
+            bottom: 0;
+            left: 0;
+          }
+          &-4 {
+            bottom: 0;
+            right: 0;
+          }
+        }
+      }
+      @keyframes moveGradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      &:hover {
+        background: linear-gradient(
+          45deg,
+          var(--color-main-1),
+          var(--color-main-1-l3),
+          var(--color-main-1-l2),
+          var(--color-main-1-l3),
+          var(--color-main-1)
+        );
+        background-size: 250% 250%;
+        animation: moveGradient 4s ease infinite;
+        transition: 300ms;
+
+        .crosses-decoration {
+          .cross {
+            opacity: 1;
+            transition: 300ms;
+            animation: blink-in 600ms cubic-bezier(1, 0, 0, 1) forwards;
+
+            &-1 {
+              transform: translate(10px, 6px);
+            }
+            &-2 {
+              transform: translate(-10px, 6px);
+            }
+            &-3 {
+              transform: translate(10px, -15px);
+            }
+            &-4 {
+              transform: translate(-10px, -15px);
+            }
+          }
+        }
       }
     }
 
-    @media screen and (width >= 900px){
-      &__logo-content{
-        .logo__decoration-1{
+    &__logo-img {
+      width: 100%;
+      height: 100%;
+      fill: var(--color-bg);
+    }
+
+    @media screen and (width >= 768px) {
+      &__logo-content {
+        .column-decoration {
+          visibility: hidden;
+        }
+      }
+    }
+
+    @media screen and (width >= 900px) {
+      &__content {
+        .bar-right-decoration {
+          visibility: visible;
+        }
+      }
+      &__logo-content {
+        .logo__decoration-1 {
           display: none;
         }
         .column-decoration {
-          display: flex;
-          transform: translateX(55px);
-          transition: 0.35s;
+          visibility: visible;
+          transform: translateX(54px);
+          transition: 300ms;
         }
       }
     }
 
     @media screen and (width >= 1024px) {
-      &__logo-content{
+      &__logo-content {
         .column-decoration {
           transform: translateX(117px);
         }
@@ -197,23 +343,42 @@ import Navbar from './Navbar.astro';
       &--big {
         &::before {
           //width: 0%;
-          transition: 0.35s;
+          transition: 300ms;
         }
-        &::after{
+        &::after {
           transform: skewX(-42deg) translateX(-60px);
         }
         .Header__content {
           height: 100px;
-          transition: 0.35s;
+          transition: 300ms;
         }
-        .Header__logo {
+        .Header__logo-link {
           width: 190px;
           height: 120px;
           padding: 30px;
-          transition: 0.35s;
+          transition: 300ms;
+
+          &:hover {
+            .crosses-decoration {
+              .cross {
+                &-1 {
+                  transform: translate(24px, 6px);
+                }
+                &-2 {
+                  transform: translate(-24px, 6px);
+                }
+                &-3 {
+                  transform: translate(24px, -15px);
+                }
+                &-4 {
+                  transform: translate(-24px, -15px);
+                }
+              }
+            }
+          }
         }
-        .Header__logo-content{
-          .logo__decoration-2{
+        .Header__logo-content {
+          .logo__decoration-2 {
             transform: translateY(20px);
           }
           .column-decoration {
@@ -226,17 +391,42 @@ import Navbar from './Navbar.astro';
       &--big {
         .Header__content {
           height: 115px;
-          transition: 0.35s;
+          transition: 300ms;
         }
-        .Header__logo {
+        .Header__logo-link {
           width: 240px;
           height: 150px;
           padding: 38px;
-          transition: 0.35s;
-          clip-path: polygon(0% 0%,100% 0,100% calc(100% - 35px),calc(100% - 55px) 100%,0% 100%);
+          transition: 300ms;
+          clip-path: polygon(
+            0% 0%,
+            100% 0,
+            100% calc(100% - 35px),
+            calc(100% - 55px) 100%,
+            0% 100%
+          );
+
+          &:hover {
+            .crosses-decoration {
+              .cross {
+                &-1 {
+                  transform: translate(32px, 16px);
+                }
+                &-2 {
+                  transform: translate(-32px, 16px);
+                }
+                &-3 {
+                  transform: translate(32px, -25px);
+                }
+                &-4 {
+                  transform: translate(-32px, -25px);
+                }
+              }
+            }
+          }
         }
-        .Header__logo-content{
-          .logo__decoration-2{
+        .Header__logo-content {
+          .logo__decoration-2 {
             transform: translateY(80px);
             width: 50px;
             height: 50px;
