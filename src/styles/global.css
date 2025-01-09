@@ -1,8 +1,9 @@
 :root {
   /* Text */
   --font-size: 16px;
-  --font-family-1: Arial ,system-ui, sans-serif;
-  --font-family-2: "Times New Roman", serif;
+  --font-family-1: "Times New Roman", serif;
+  --font-family-2: Arial ,system-ui, sans-serif;
+  --font-family-3: "Share Tech Mono", monospace;
 
   /* Sizes */
   --size-8px: 0.5rem;
@@ -25,42 +26,78 @@
   --size-80px: 5rem;
 
   /* Color tone */
-  --color-main-1-l1: color-mix(in srgb, var(--color-main-1) 25%, var(--color-text));
-  --color-main-1-l2: color-mix(in srgb, var(--color-main-1) 50%, var(--color-text));
-  --color-main-1-l3: color-mix(in srgb, var(--color-main-1) 75%, var(--color-text));
-  --color-main-1-d1: color-mix(in srgb, var(--color-main-1) 25%, var(--color-bg));
-  --color-main-1-d2: color-mix(in srgb, var(--color-main-1) 50%, var(--color-bg));
-  --color-main-1-d3: color-mix(in srgb, var(--color-main-1) 75%, var(--color-bg));
-  
-  --color-main-2-l1: color-mix(in srgb, var(--color-main-2) 25%, var(--color-text));
-  --color-main-2-l2: color-mix(in srgb, var(--color-main-2) 50%, var(--color-text));
-  --color-main-2-l3: color-mix(in srgb, var(--color-main-2) 75%, var(--color-text));
-  --color-main-2-d1: color-mix(in srgb, var(--color-main-2) 25%, var(--color-bg));
-  --color-main-2-d2: color-mix(in srgb, var(--color-main-2) 50%, var(--color-bg));
-  --color-main-2-d3: color-mix(in srgb, var(--color-main-2) 75%, var(--color-bg));
+  /*Main color 1*/
+  --color-main-1-l1: color-mix(in srgb, var(--color-main-1) 20%, var(--color-text));
+  --color-main-1-l2: color-mix(in srgb, var(--color-main-1) 40%, var(--color-text));
+  --color-main-1-l3: color-mix(in srgb, var(--color-main-1) 60%, var(--color-text));
+  --color-main-1-l4: color-mix(in srgb, var(--color-main-1) 80%, var(--color-text));
+
+  --color-main-1-d1: color-mix(in srgb, var(--color-main-1) 80%, var(--color-bg));
+  --color-main-1-d2: color-mix(in srgb, var(--color-main-1) 60%, var(--color-bg));
+  --color-main-1-d3: color-mix(in srgb, var(--color-main-1) 40%, var(--color-bg));
+  --color-main-1-d4: color-mix(in srgb, var(--color-main-1) 20%, var(--color-bg));
+
+  /*Main color 2*/
+  --color-main-2-l1: color-mix(in srgb, var(--color-main-2) 20%, var(--color-text));
+  --color-main-2-l2: color-mix(in srgb, var(--color-main-2) 40%, var(--color-text));
+  --color-main-2-l3: color-mix(in srgb, var(--color-main-2) 60%, var(--color-text));
+  --color-main-2-l4: color-mix(in srgb, var(--color-main-2) 80%, var(--color-text));
+
+  --color-main-2-d1: color-mix(in srgb, var(--color-main-2) 80%, var(--color-bg));
+  --color-main-2-d2: color-mix(in srgb, var(--color-main-2) 60%, var(--color-bg));
+  --color-main-2-d3: color-mix(in srgb, var(--color-main-2) 40%, var(--color-bg));
+  --color-main-2-d4: color-mix(in srgb, var(--color-main-2) 20%, var(--color-bg));
+
+  /*Main color 3*/
+  --color-main-3-l1: color-mix(in srgb, var(--color-main-3) 20%, var(--color-text));
+  --color-main-3-l2: color-mix(in srgb, var(--color-main-3) 40%, var(--color-text));
+  --color-main-3-l3: color-mix(in srgb, var(--color-main-3) 60%, var(--color-text));
+  --color-main-3-l4: color-mix(in srgb, var(--color-main-3) 80%, var(--color-text));
+
+  --color-main-3-d1: color-mix(in srgb, var(--color-main-3) 80%, var(--color-bg));
+  --color-main-3-d2: color-mix(in srgb, var(--color-main-3) 60%, var(--color-bg));
+  --color-main-3-d3: color-mix(in srgb, var(--color-main-3) 40%, var(--color-bg));
+  --color-main-3-d4: color-mix(in srgb, var(--color-main-3) 20%, var(--color-bg));
 }
 [data-theme="dark"] {
   color-scheme: dark;
 
   --color-main-1: #66ff66; /*#92FFB2*/
-  --color-main-2: #9933ff; /*#6648F3*/
+  --color-main-2: #562caf; /*#6648F3*/
   --color-main-3: #ffbc00; /*#ffaa00*/
   --color-bg: #090b11;
   --color-text: #E4E9F3;
+  --color-main-1-rgb: 102, 255, 102;
+  --color-main-2-rgb: 86, 44, 175;
+  --color-main-3-rgb: 255, 188, 0;
+  --color-bg-rgb: 9, 11, 17;
+  --color-text-rgb: 228, 233, 243;
+
+  --linearPrimarySecondary: linear-gradient(#562caf, #66ff66);
+  --linearPrimaryAccent: linear-gradient(#562caf, #ffbc00);
+  --linearSecondaryAccent: linear-gradient(#66ff66, #ffbc00);
+  --radialPrimarySecondary: radial-gradient(#562caf, #66ff66);
+  --radialPrimaryAccent: radial-gradient(#562caf, #ffbc00);
+  --radialSecondaryAccent: radial-gradient(#66ff66, #ffbc00);
 }
 [data-theme="light"] {
   color-scheme: light;
 
-  --color-main-1: #9900ff; /*#6648F3*/
-  --color-main-2: #00ff00; /*#50fa00*/
+  --color-main-1: #6d16b5; /*#6648F3*/
+  --color-main-2: #5dd959; /*#50fa00*/
   --color-main-3: #ffaa00; /*#ffaa00*/
   --color-bg: #E4E9F3;
   --color-text: #090b11;
+  --color-main-1-rgb: 109, 22, 181;
+  --color-main-2-rgb: 93, 217, 89;
+  --color-main-3-rgb: 255, 170, 0;
+  --color-bg-rgb: 228, 233, 243;
+  --color-text-rgb: 9, 11, 17;
 }
 html {
   background-color: var(--color-bg);
   color: var(--color-text);
-  /* font-family: var(--font-family-1); */
+  /* font-family: var(--font-family-2); */
   font-size: var(--font-size);
 }
 code {
@@ -83,6 +120,11 @@ code {
   .container {
     /* max-width: 1536px; */
     max-width: 1280px;
+  }
+}
+@media (min-width: 1900px) {
+  .container {
+    max-width: 1536px;
   }
 }
 

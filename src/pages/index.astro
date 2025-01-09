@@ -1,133 +1,83 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Tranquiluxe } from "uvcanvas"
 ---
 
 <Layout title="SebaOlate | Front-end developer">
 	<!-- las clases que sirven para crear un .contanier con "container px-3 mx-auto py-6 md:pt-0 columns-3 gap-8" -->
-	<main class="container mx-auto px-4 pt-36 pb-6">
-		<!-- <div class="gradient-box"></div>
-		<style>
-			.gradient-box {
-					width: 400px;
-					height: 400px;
-					background: repeating-linear-gradient(
-							45deg,
-							#231A1B,
-							#231A1B 100px,
-							#CE212B 101px,
-							#DD8F2B 103px,
-							#DD8F2B 200px,
-							#CE212B 202px
-					);
-					border: 2px solid black;
-				}
-		</style>
+	<main>		
+		<section class="hero-section">
+			<div class="hero-section__bg">
+				<div class="hero-section__bg-1">
+					<Tranquiluxe client:load/>					
+				</div>
+			</div>
+			<div class="container mx-auto px-4 pt-36">
+				<article class="hero-section__hero">
+					<hgroup class="eva-heading">
+						<h2 class="eva-heading__title">NEON</h2>
+						<h2 class="eva-heading__title">GENESIS</h2>
+						<h1 class="eva-heading__title">EVANGELION</h1>
+						<h3 class="eva-heading__episode-number">EPISODE: 04</h3>
+						<h4 class="eva-heading__episode-title monotype">
+							Those women longed for the touch of <br>others' lips, and thus invited their kisses
+						</h4>
+					</hgroup>
+				</article>
+			</div>
+		</section>
 
-		<div class="gradient-bg"></div>
+		<code>const hola:string = "EVA - 01";</code>
+		<p>const hola:string = "EVA - 01";</p>
 
-		<style>
-			/* Gradiente animado */
-			.gradient-bg {
-				height: 200px;
-				width: 200px;
-				background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
-				background-size: 300% 300%; /* Tamaño grande para animación */
-				animation: moveGradient 6s ease infinite; /* Animación */
-			}
-
-			/* Definición de la animación */
-			@keyframes moveGradient {
-				0% {
-					background-position: 0% 50%;
-				}
-				50% {
-					background-position: 100% 50%;
-				}
-				100% {
-					background-position: 0% 50%;
-				}
-			}
-		</style> -->
-
-		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, qui dignissimos a iusto necessitatibus culpa fugiat tempore harum doloremque nam quo repellendus, quaerat ratione enim pariatur veritatis sapiente tempora laudantium.
-		Mollitia iste itaque libero repudiandae molestias sequi, quam laudantium dolor sapiente ipsa quibusdam aut velit minima eaque quae voluptate dolorum explicabo aspernatur hic deleniti quidem natus ullam doloribus! Dolore, porro?
-		Facilis cumque itaque ab distinctio, voluptatum quasi blanditiis, expedita corrupti culpa quibusdam incidunt est odio sed cum ipsum. Minus a quia saepe et harum eveniet esse quas eos ea tenetur!
-		Quos officia voluptatum fugiat error architecto facilis illum corrupti, deserunt necessitatibus cumque quam doloribus nulla id quaerat blanditiis tenetur consequatur minima quibusdam aperiam amet ab? Quos eum veniam laudantium architecto!
-		Hic corporis ut cupiditate laboriosam? Sint quos dolorem cumque recusandae explicabo, veritatis vel, quisquam maxime reiciendis suscipit dolores ea inventore placeat doloremque! Culpa animi tempora ullam! Animi fugiat numquam consectetur.</p>
-		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, qui dignissimos a iusto necessitatibus culpa fugiat tempore harum doloremque nam quo repellendus, quaerat ratione enim pariatur veritatis sapiente tempora laudantium.
-		Mollitia iste itaque libero repudiandae molestias sequi, quam laudantium dolor sapiente ipsa quibusdam aut velit minima eaque quae voluptate dolorum explicabo aspernatur hic deleniti quidem natus ullam doloribus! Dolore, porro?
-		Facilis cumque itaque ab distinctio, voluptatum quasi blanditiis, expedita corrupti culpa quibusdam incidunt est odio sed cum ipsum. Minus a quia saepe et harum eveniet esse quas eos ea tenetur!
-		Quos officia voluptatum fugiat error architecto facilis illum corrupti, deserunt necessitatibus cumque quam doloribus nulla id quaerat blanditiis tenetur consequatur minima quibusdam aperiam amet ab? Quos eum veniam laudantium architecto!
-		Hic corporis ut cupiditate laboriosam? Sint quos dolorem cumque recusandae explicabo, veritatis vel, quisquam maxime reiciendis suscipit dolores ea inventore placeat doloremque! Culpa animi tempora ullam! Animi fugiat numquam consectetur.</p>
-		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, qui dignissimos a iusto necessitatibus culpa fugiat tempore harum doloremque nam quo repellendus, quaerat ratione enim pariatur veritatis sapiente tempora laudantium.
-		Mollitia iste itaque libero repudiandae molestias sequi, quam laudantium dolor sapiente ipsa quibusdam aut velit minima eaque quae voluptate dolorum explicabo aspernatur hic deleniti quidem natus ullam doloribus! Dolore, porro?
-		Facilis cumque itaque ab distinctio, voluptatum quasi blanditiis, expedita corrupti culpa quibusdam incidunt est odio sed cum ipsum. Minus a quia saepe et harum eveniet esse quas eos ea tenetur!
-		Quos officia voluptatum fugiat error architecto facilis illum corrupti, deserunt necessitatibus cumque quam doloribus nulla id quaerat blanditiis tenetur consequatur minima quibusdam aperiam amet ab? Quos eum veniam laudantium architecto!
-		Hic corporis ut cupiditate laboriosam? Sint quos dolorem cumque recusandae explicabo, veritatis vel, quisquam maxime reiciendis suscipit dolores ea inventore placeat doloremque! Culpa animi tempora ullam! Animi fugiat numquam consectetur.</p>
-		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, qui dignissimos a iusto necessitatibus culpa fugiat tempore harum doloremque nam quo repellendus, quaerat ratione enim pariatur veritatis sapiente tempora laudantium.
-		Mollitia iste itaque libero repudiandae molestias sequi, quam laudantium dolor sapiente ipsa quibusdam aut velit minima eaque quae voluptate dolorum explicabo aspernatur hic deleniti quidem natus ullam doloribus! Dolore, porro?
-		Facilis cumque itaque ab distinctio, voluptatum quasi blanditiis, expedita corrupti culpa quibusdam incidunt est odio sed cum ipsum. Minus a quia saepe et harum eveniet esse quas eos ea tenetur!
-		Quos officia voluptatum fugiat error architecto facilis illum corrupti, deserunt necessitatibus cumque quam doloribus nulla id quaerat blanditiis tenetur consequatur minima quibusdam aperiam amet ab? Quos eum veniam laudantium architecto!
-		Hic corporis ut cupiditate laboriosam? Sint quos dolorem cumque recusandae explicabo, veritatis vel, quisquam maxime reiciendis suscipit dolores ea inventore placeat doloremque! Culpa animi tempora ullam! Animi fugiat numquam consectetur.</p>
-		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, qui dignissimos a iusto necessitatibus culpa fugiat tempore harum doloremque nam quo repellendus, quaerat ratione enim pariatur veritatis sapiente tempora laudantium.
-		Mollitia iste itaque libero repudiandae molestias sequi, quam laudantium dolor sapiente ipsa quibusdam aut velit minima eaque quae voluptate dolorum explicabo aspernatur hic deleniti quidem natus ullam doloribus! Dolore, porro?
-		Facilis cumque itaque ab distinctio, voluptatum quasi blanditiis, expedita corrupti culpa quibusdam incidunt est odio sed cum ipsum. Minus a quia saepe et harum eveniet esse quas eos ea tenetur!
-		Quos officia voluptatum fugiat error architecto facilis illum corrupti, deserunt necessitatibus cumque quam doloribus nulla id quaerat blanditiis tenetur consequatur minima quibusdam aperiam amet ab? Quos eum veniam laudantium architecto!
-		Hic corporis ut cupiditate laboriosam? Sint quos dolorem cumque recusandae explicabo, veritatis vel, quisquam maxime reiciendis suscipit dolores ea inventore placeat doloremque! Culpa animi tempora ullam! Animi fugiat numquam consectetur.</p>
-		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, qui dignissimos a iusto necessitatibus culpa fugiat tempore harum doloremque nam quo repellendus, quaerat ratione enim pariatur veritatis sapiente tempora laudantium.
-		Mollitia iste itaque libero repudiandae molestias sequi, quam laudantium dolor sapiente ipsa quibusdam aut velit minima eaque quae voluptate dolorum explicabo aspernatur hic deleniti quidem natus ullam doloribus! Dolore, porro?
-		Facilis cumque itaque ab distinctio, voluptatum quasi blanditiis, expedita corrupti culpa quibusdam incidunt est odio sed cum ipsum. Minus a quia saepe et harum eveniet esse quas eos ea tenetur!
-		Quos officia voluptatum fugiat error architecto facilis illum corrupti, deserunt necessitatibus cumque quam doloribus nulla id quaerat blanditiis tenetur consequatur minima quibusdam aperiam amet ab? Quos eum veniam laudantium architecto!
-		Hic corporis ut cupiditate laboriosam? Sint quos dolorem cumque recusandae explicabo, veritatis vel, quisquam maxime reiciendis suscipit dolores ea inventore placeat doloremque! Culpa animi tempora ullam! Animi fugiat numquam consectetur.</p>
-		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, qui dignissimos a iusto necessitatibus culpa fugiat tempore harum doloremque nam quo repellendus, quaerat ratione enim pariatur veritatis sapiente tempora laudantium.
-		Mollitia iste itaque libero repudiandae molestias sequi, quam laudantium dolor sapiente ipsa quibusdam aut velit minima eaque quae voluptate dolorum explicabo aspernatur hic deleniti quidem natus ullam doloribus! Dolore, porro?
-		Facilis cumque itaque ab distinctio, voluptatum quasi blanditiis, expedita corrupti culpa quibusdam incidunt est odio sed cum ipsum. Minus a quia saepe et harum eveniet esse quas eos ea tenetur!
-		Quos officia voluptatum fugiat error architecto facilis illum corrupti, deserunt necessitatibus cumque quam doloribus nulla id quaerat blanditiis tenetur consequatur minima quibusdam aperiam amet ab? Quos eum veniam laudantium architecto!
-		Hic corporis ut cupiditate laboriosam? Sint quos dolorem cumque recusandae explicabo, veritatis vel, quisquam maxime reiciendis suscipit dolores ea inventore placeat doloremque! Culpa animi tempora ullam! Animi fugiat numquam consectetur.</p>
-		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, qui dignissimos a iusto necessitatibus culpa fugiat tempore harum doloremque nam quo repellendus, quaerat ratione enim pariatur veritatis sapiente tempora laudantium.
-		Mollitia iste itaque libero repudiandae molestias sequi, quam laudantium dolor sapiente ipsa quibusdam aut velit minima eaque quae voluptate dolorum explicabo aspernatur hic deleniti quidem natus ullam doloribus! Dolore, porro?
-		Facilis cumque itaque ab distinctio, voluptatum quasi blanditiis, expedita corrupti culpa quibusdam incidunt est odio sed cum ipsum. Minus a quia saepe et harum eveniet esse quas eos ea tenetur!
-		Quos officia voluptatum fugiat error architecto facilis illum corrupti, deserunt necessitatibus cumque quam doloribus nulla id quaerat blanditiis tenetur consequatur minima quibusdam aperiam amet ab? Quos eum veniam laudantium architecto!
-		Hic corporis ut cupiditate laboriosam? Sint quos dolorem cumque recusandae explicabo, veritatis vel, quisquam maxime reiciendis suscipit dolores ea inventore placeat doloremque! Culpa animi tempora ullam! Animi fugiat numquam consectetur.</p>
-		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, qui dignissimos a iusto necessitatibus culpa fugiat tempore harum doloremque nam quo repellendus, quaerat ratione enim pariatur veritatis sapiente tempora laudantium.
-		Mollitia iste itaque libero repudiandae molestias sequi, quam laudantium dolor sapiente ipsa quibusdam aut velit minima eaque quae voluptate dolorum explicabo aspernatur hic deleniti quidem natus ullam doloribus! Dolore, porro?
-		Facilis cumque itaque ab distinctio, voluptatum quasi blanditiis, expedita corrupti culpa quibusdam incidunt est odio sed cum ipsum. Minus a quia saepe et harum eveniet esse quas eos ea tenetur!
-		Quos officia voluptatum fugiat error architecto facilis illum corrupti, deserunt necessitatibus cumque quam doloribus nulla id quaerat blanditiis tenetur consequatur minima quibusdam aperiam amet ab? Quos eum veniam laudantium architecto!
-		Hic corporis ut cupiditate laboriosam? Sint quos dolorem cumque recusandae explicabo, veritatis vel, quisquam maxime reiciendis suscipit dolores ea inventore placeat doloremque! Culpa animi tempora ullam! Animi fugiat numquam consectetur.</p>
-		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, qui dignissimos a iusto necessitatibus culpa fugiat tempore harum doloremque nam quo repellendus, quaerat ratione enim pariatur veritatis sapiente tempora laudantium.
-		Mollitia iste itaque libero repudiandae molestias sequi, quam laudantium dolor sapiente ipsa quibusdam aut velit minima eaque quae voluptate dolorum explicabo aspernatur hic deleniti quidem natus ullam doloribus! Dolore, porro?
-		Facilis cumque itaque ab distinctio, voluptatum quasi blanditiis, expedita corrupti culpa quibusdam incidunt est odio sed cum ipsum. Minus a quia saepe et harum eveniet esse quas eos ea tenetur!
-		Quos officia voluptatum fugiat error architecto facilis illum corrupti, deserunt necessitatibus cumque quam doloribus nulla id quaerat blanditiis tenetur consequatur minima quibusdam aperiam amet ab? Quos eum veniam laudantium architecto!
-		Hic corporis ut cupiditate laboriosam? Sint quos dolorem cumque recusandae explicabo, veritatis vel, quisquam maxime reiciendis suscipit dolores ea inventore placeat doloremque! Culpa animi tempora ullam! Animi fugiat numquam consectetur.</p>
-		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, qui dignissimos a iusto necessitatibus culpa fugiat tempore harum doloremque nam quo repellendus, quaerat ratione enim pariatur veritatis sapiente tempora laudantium.
-		Mollitia iste itaque libero repudiandae molestias sequi, quam laudantium dolor sapiente ipsa quibusdam aut velit minima eaque quae voluptate dolorum explicabo aspernatur hic deleniti quidem natus ullam doloribus! Dolore, porro?
-		Facilis cumque itaque ab distinctio, voluptatum quasi blanditiis, expedita corrupti culpa quibusdam incidunt est odio sed cum ipsum. Minus a quia saepe et harum eveniet esse quas eos ea tenetur!
-		Quos officia voluptatum fugiat error architecto facilis illum corrupti, deserunt necessitatibus cumque quam doloribus nulla id quaerat blanditiis tenetur consequatur minima quibusdam aperiam amet ab? Quos eum veniam laudantium architecto!
-		Hic corporis ut cupiditate laboriosam? Sint quos dolorem cumque recusandae explicabo, veritatis vel, quisquam maxime reiciendis suscipit dolores ea inventore placeat doloremque! Culpa animi tempora ullam! Animi fugiat numquam consectetur.</p>
-		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, qui dignissimos a iusto necessitatibus culpa fugiat tempore harum doloremque nam quo repellendus, quaerat ratione enim pariatur veritatis sapiente tempora laudantium.
-		Mollitia iste itaque libero repudiandae molestias sequi, quam laudantium dolor sapiente ipsa quibusdam aut velit minima eaque quae voluptate dolorum explicabo aspernatur hic deleniti quidem natus ullam doloribus! Dolore, porro?
-		Facilis cumque itaque ab distinctio, voluptatum quasi blanditiis, expedita corrupti culpa quibusdam incidunt est odio sed cum ipsum. Minus a quia saepe et harum eveniet esse quas eos ea tenetur!
-		Quos officia voluptatum fugiat error architecto facilis illum corrupti, deserunt necessitatibus cumque quam doloribus nulla id quaerat blanditiis tenetur consequatur minima quibusdam aperiam amet ab? Quos eum veniam laudantium architecto!
-		Hic corporis ut cupiditate laboriosam? Sint quos dolorem cumque recusandae explicabo, veritatis vel, quisquam maxime reiciendis suscipit dolores ea inventore placeat doloremque! Culpa animi tempora ullam! Animi fugiat numquam consectetur.</p>
-		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, qui dignissimos a iusto necessitatibus culpa fugiat tempore harum doloremque nam quo repellendus, quaerat ratione enim pariatur veritatis sapiente tempora laudantium.
-		Mollitia iste itaque libero repudiandae molestias sequi, quam laudantium dolor sapiente ipsa quibusdam aut velit minima eaque quae voluptate dolorum explicabo aspernatur hic deleniti quidem natus ullam doloribus! Dolore, porro?
-		Facilis cumque itaque ab distinctio, voluptatum quasi blanditiis, expedita corrupti culpa quibusdam incidunt est odio sed cum ipsum. Minus a quia saepe et harum eveniet esse quas eos ea tenetur!
-		Quos officia voluptatum fugiat error architecto facilis illum corrupti, deserunt necessitatibus cumque quam doloribus nulla id quaerat blanditiis tenetur consequatur minima quibusdam aperiam amet ab? Quos eum veniam laudantium architecto!
-		Hic corporis ut cupiditate laboriosam? Sint quos dolorem cumque recusandae explicabo, veritatis vel, quisquam maxime reiciendis suscipit dolores ea inventore placeat doloremque! Culpa animi tempora ullam! Animi fugiat numquam consectetur.</p>
-		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, qui dignissimos a iusto necessitatibus culpa fugiat tempore harum doloremque nam quo repellendus, quaerat ratione enim pariatur veritatis sapiente tempora laudantium.
-		Mollitia iste itaque libero repudiandae molestias sequi, quam laudantium dolor sapiente ipsa quibusdam aut velit minima eaque quae voluptate dolorum explicabo aspernatur hic deleniti quidem natus ullam doloribus! Dolore, porro?
-		Facilis cumque itaque ab distinctio, voluptatum quasi blanditiis, expedita corrupti culpa quibusdam incidunt est odio sed cum ipsum. Minus a quia saepe et harum eveniet esse quas eos ea tenetur!
-		Quos officia voluptatum fugiat error architecto facilis illum corrupti, deserunt necessitatibus cumque quam doloribus nulla id quaerat blanditiis tenetur consequatur minima quibusdam aperiam amet ab? Quos eum veniam laudantium architecto!
-		Hic corporis ut cupiditate laboriosam? Sint quos dolorem cumque recusandae explicabo, veritatis vel, quisquam maxime reiciendis suscipit dolores ea inventore placeat doloremque! Culpa animi tempora ullam! Animi fugiat numquam consectetur.</p>
-		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, qui dignissimos a iusto necessitatibus culpa fugiat tempore harum doloremque nam quo repellendus, quaerat ratione enim pariatur veritatis sapiente tempora laudantium.
-		Mollitia iste itaque libero repudiandae molestias sequi, quam laudantium dolor sapiente ipsa quibusdam aut velit minima eaque quae voluptate dolorum explicabo aspernatur hic deleniti quidem natus ullam doloribus! Dolore, porro?
-		Facilis cumque itaque ab distinctio, voluptatum quasi blanditiis, expedita corrupti culpa quibusdam incidunt est odio sed cum ipsum. Minus a quia saepe et harum eveniet esse quas eos ea tenetur!
-		Quos officia voluptatum fugiat error architecto facilis illum corrupti, deserunt necessitatibus cumque quam doloribus nulla id quaerat blanditiis tenetur consequatur minima quibusdam aperiam amet ab? Quos eum veniam laudantium architecto!
-		Hic corporis ut cupiditate laboriosam? Sint quos dolorem cumque recusandae explicabo, veritatis vel, quisquam maxime reiciendis suscipit dolores ea inventore placeat doloremque! Culpa animi tempora ullam! Animi fugiat numquam consectetur.</p>
-		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, qui dignissimos a iusto necessitatibus culpa fugiat tempore harum doloremque nam quo repellendus, quaerat ratione enim pariatur veritatis sapiente tempora laudantium.
-		Mollitia iste itaque libero repudiandae molestias sequi, quam laudantium dolor sapiente ipsa quibusdam aut velit minima eaque quae voluptate dolorum explicabo aspernatur hic deleniti quidem natus ullam doloribus! Dolore, porro?
-		Facilis cumque itaque ab distinctio, voluptatum quasi blanditiis, expedita corrupti culpa quibusdam incidunt est odio sed cum ipsum. Minus a quia saepe et harum eveniet esse quas eos ea tenetur!
-		Quos officia voluptatum fugiat error architecto facilis illum corrupti, deserunt necessitatibus cumque quam doloribus nulla id quaerat blanditiis tenetur consequatur minima quibusdam aperiam amet ab? Quos eum veniam laudantium architecto!
-		Hic corporis ut cupiditate laboriosam? Sint quos dolorem cumque recusandae explicabo, veritatis vel, quisquam maxime reiciendis suscipit dolores ea inventore placeat doloremque! Culpa animi tempora ullam! Animi fugiat numquam consectetur.</p>
+		<ol class="colores pb-3">
+			<li style="--color: var(--color-main-1-l1)"></li>
+			<li style="--color: var(--color-main-1-l2)"></li>
+			<li style="--color: var(--color-main-1-l3)"></li>
+			<li style="--color: var(--color-main-1-l4)"></li>
+		</ol>
+		<ol class="colores pb-36">
+			<li style="--color: var(--color-main-1-d1)"></li>
+			<li style="--color: var(--color-main-1-d2)"></li>
+			<li style="--color: var(--color-main-1-d3)"></li>
+			<li style="--color: var(--color-main-1-d4)"></li>
+		</ol>
 	</main>
 </Layout>
+
+<style lang="scss">
+	.colores{
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		grid-gap: 1rem;
+		li{
+			width: 100%;
+			height: 100px;
+			background-color: var(--color);
+		}
+	}
+
+	.hero-section{
+		position: relative;
+		height: min(100vh,915px);
+		width: 100%;
+		display: block;
+		&__bg{
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: -1;
+			width: 100%;
+			height: 100%;
+			&-1{
+				display: block;
+				width: 100%;
+				height: 100%;
+				filter: invert(1) brightness(0.5) contrast(1.5);
+			}
+		}
+	}
+	.eva-heading__episode-number{
+		font-family: var(--font-family-3);
+	}
+</style>

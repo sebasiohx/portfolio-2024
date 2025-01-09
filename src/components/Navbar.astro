@@ -61,7 +61,6 @@ const iconsLinks: { label: string; href: string; icon: string }[] = [
           <span class="triangle triangle-1"></span>
           <a 
           href={href}
-          title={label}
           class:list={['nav-items__link', {'active': Astro.url.pathname === href ||
           (href !== '/' && Astro.url.pathname.startsWith(href))}]}
           >
@@ -92,7 +91,7 @@ const iconsLinks: { label: string; href: string; icon: string }[] = [
     }
   </ul>
 
-  <button id='btn-theme' class="btn-theme" aria-label="cambiar de color" role="switch" aria-checked="false">
+  <button id='btn-theme' class="btn-theme" aria-label="cambiar de color" role="switch" aria-checked="false" title="modo de color">
     <span class='btn-theme__title'>
       Color
       <i class="btn-theme__kanji">色</i>
@@ -149,7 +148,7 @@ const iconsLinks: { label: string; href: string; icon: string }[] = [
         text-transform: uppercase;
         font-size: var(--size-14px);
         text-shadow: var(--color-text) 0px 0px 8px;
-        font-family: var(--font-family-1);
+        font-family: var(--font-family-2);
 
         &::after {
           content: '';
@@ -631,7 +630,7 @@ const iconsLinks: { label: string; href: string; icon: string }[] = [
       padding-right: 18px;
       margin-bottom: 32px;
       text-transform: uppercase;
-      font-family: var(--font-family-2);
+      font-family: var(--font-family-1);
       transform: scaleY(1.2);
       text-shadow: var(--color-main-1) 1px 0px 4px;
     }
@@ -648,7 +647,7 @@ const iconsLinks: { label: string; href: string; icon: string }[] = [
       position: relative;
       font-size: var(--size-16px);
       text-transform: uppercase;
-      font-family: var(--font-family-1);
+      font-family: var(--font-family-2);
 
       &::after {
         content: '';
