@@ -1,83 +1,188 @@
 ---
+import { Image } from 'astro:assets';
+import { Tranquiluxe } from 'uvcanvas';
+
 import Layout from '../layouts/Layout.astro';
-import { Tranquiluxe } from "uvcanvas"
+
+import mainImg from '@images/foto-seba-home.png';
 ---
 
-<Layout title="SebaOlate | Front-end developer">
-	<!-- las clases que sirven para crear un .contanier con "container px-3 mx-auto py-6 md:pt-0 columns-3 gap-8" -->
-	<main>		
-		<section class="hero-section">
-			<div class="hero-section__bg">
-				<div class="hero-section__bg-1">
-					<Tranquiluxe client:load/>					
-				</div>
-			</div>
-			<div class="container mx-auto px-4 pt-36">
-				<article class="hero-section__hero">
-					<hgroup class="eva-heading">
-						<h2 class="eva-heading__title">NEON</h2>
-						<h2 class="eva-heading__title">GENESIS</h2>
-						<h1 class="eva-heading__title">EVANGELION</h1>
-						<h3 class="eva-heading__episode-number">EPISODE: 04</h3>
-						<h4 class="eva-heading__episode-title monotype">
-							Those women longed for the touch of <br>others' lips, and thus invited their kisses
-						</h4>
-					</hgroup>
-				</article>
-			</div>
-		</section>
+<Layout title='SebaOlate | Front-end developer'>
+  <!-- las clases que sirven para crear un .contanier con "container px-3 mx-auto py-6 md:pt-0 columns-3 gap-8" -->
+  <main>
+    <section class='hero-section'>
+      <div class='hero-section__bg'>
+        <div class='hero-section__bg-1'>
+          <Tranquiluxe client:load />
+        </div>
+      </div>
+      <div class='container mx-auto px-2 md:px-4'>
+        <article class='hero-section__hero'>
+          <hgroup class='eva-heading pt-14 pb-20 md:px-20 md:pt-20'>
+            <h2 class='eva-heading__title eva-heading__title--2'>Sebastián</h2>
+            <h2 class='eva-heading__title eva-heading__title--2'>Olate H.</h2>
+            <h1 class='eva-heading__title eva-heading__title--1'>Front-end</h1>
+            <h3 class='eva-heading__episode-number'>EPISODE: 2024</h3>
+            <h4 class='eva-heading__episode-title'>Desarrollo Web</h4>
+            <h4 class='eva-heading__episode-title'>CSS Senior</h4>
+          </hgroup>
+          <figure class='hero-section__img-container'>
+            <Image src={mainImg} class="hero-section__img" alt='foto Sebastian Olate' />
+          </figure>
+        </article>
+      </div>
+    </section>
 
-		<code>const hola:string = "EVA - 01";</code>
-		<p>const hola:string = "EVA - 01";</p>
+    <code>const hola:string = "EVA - 01";</code>
+    <p>const hola:string = "EVA - 01";</p>
 
-		<ol class="colores pb-3">
-			<li style="--color: var(--color-main-1-l1)"></li>
-			<li style="--color: var(--color-main-1-l2)"></li>
-			<li style="--color: var(--color-main-1-l3)"></li>
-			<li style="--color: var(--color-main-1-l4)"></li>
-		</ol>
-		<ol class="colores pb-36">
-			<li style="--color: var(--color-main-1-d1)"></li>
-			<li style="--color: var(--color-main-1-d2)"></li>
-			<li style="--color: var(--color-main-1-d3)"></li>
-			<li style="--color: var(--color-main-1-d4)"></li>
-		</ol>
-	</main>
+    <ol class='colores pb-3'>
+      <li style='--color: var(--color-main-1-l1)'></li>
+      <li style='--color: var(--color-main-1-l2)'></li>
+      <li style='--color: var(--color-main-1-l3)'></li>
+      <li style='--color: var(--color-main-1-l4)'></li>
+    </ol>
+    <ol class='colores pb-36'>
+      <li style='--color: var(--color-main-1-d1)'></li>
+      <li style='--color: var(--color-main-1-d2)'></li>
+      <li style='--color: var(--color-main-1-d3)'></li>
+      <li style='--color: var(--color-main-1-d4)'></li>
+    </ol>
+  </main>
 </Layout>
 
-<style lang="scss">
-	.colores{
-		display: grid;
-		grid-template-columns: repeat(4, 1fr);
-		grid-gap: 1rem;
-		li{
-			width: 100%;
-			height: 100px;
-			background-color: var(--color);
-		}
-	}
+<style lang='scss'>
+  .colores {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem;
+    li {
+      width: 100%;
+      height: 100px;
+      background-color: var(--color);
+    }
+  }
 
-	.hero-section{
-		position: relative;
-		height: min(100vh,915px);
-		width: 100%;
-		display: block;
-		&__bg{
-			position: absolute;
-			top: 0;
-			left: 0;
-			z-index: -1;
-			width: 100%;
-			height: 100%;
-			&-1{
-				display: block;
-				width: 100%;
-				height: 100%;
-				filter: invert(1) brightness(0.5) contrast(1.5);
-			}
-		}
-	}
-	.eva-heading__episode-number{
-		font-family: var(--font-family-3);
-	}
+  .hero-section {
+    position: relative;
+    //height: min(100vh, 915px);
+    height: auto;
+    min-height: 100vh;
+    width: 100%;
+    display: grid;
+    place-items: center;
+
+    &__bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      &-1 {
+        display: block;
+        width: 100%;
+        height: 100%;
+        filter: invert(1) brightness(0.5) contrast(1.5);
+      }
+    }
+    &__hero {
+      padding-top: 120px;
+      //padding-bottom: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .eva-heading {
+      position: relative;
+      flex-basis: 100%;
+      padding-left: 12vw;
+      background-color: var(--color-bg);
+      text-shadow:
+        0 0 2px #e19a86,
+        0 0 1.5px #854535,
+        0 0 1.5px #5c150c;
+      font-family: var(--font-family-1);
+      font-weight: bold;
+      clip-path: polygon(
+        5.49% 0%,
+        61.7% 0%,
+        67.2% 9.5%,
+        100% 9.5%,
+        100% 100%,
+        66.7% 100%,
+        60.7% 92.5%,
+        0% 92.3%,
+        0% 7.35%
+      );
+      &__title {
+        transform: scale(1, 1.5);
+        line-height: 1.2em;
+        letter-spacing: -0.03em;
+        text-transform: uppercase;
+        &--1 {
+          font-size: clamp(3rem, 5vw, 5.5rem);
+          background: var(--linearSecondaryPrimary);
+          background-clip: text;
+          color: transparent;
+          text-shadow: none;
+          white-space: nowrap;
+        }
+        &--2 {
+          font-size: clamp(2.2rem, 3.6vw, 4rem);
+        }
+      }
+      &__episode-number {
+        font-family: var(--font-family-2);
+        font-size: clamp(1.25rem, 2.1vw, 2.3rem);
+        transform: scale(1, 1.5);
+        letter-spacing: -0.01em;
+        margin: 10px 0 16px 0;
+      }
+      &__episode-title {
+        transform: scale(1, 1.3);
+        font-size: clamp(1.2rem, 1.85vw, 2rem);
+        line-height: 1.5em;
+        text-transform: uppercase;
+      }
+    }
+    &__img-container {
+      display: block;
+      width: min(100%, 300px);
+      height: 400px;
+      //background-color: var(--color-main-2);
+      clip-path: polygon(
+        calc(0% + 50px) 0%,
+        100% 0%,
+        100% calc(100% - 50px),
+        calc(100% - 50px) 100%,
+        0% 100%,
+        0% calc(0% + 50px)
+      );
+      transform: translate(0vw,-7vh);
+      background: linear-gradient(
+        rgba(var(--color-main-1-rgb), 0.5),
+        rgba(var(--color-main-2-rgb), 0.95)
+      );
+      backdrop-filter: blur(6px);
+    }
+    &__img {
+      filter: drop-shadow(2px 4px 6px var(--color-bg));
+    }
+    @media screen and (min-width: 768px) {
+      .eva-heading {
+        clip-path: polygon(
+          59.7% 0%,
+          66.2% 9.3%,
+          100% 9%,
+          100% 90.8%,
+          96% 100%,
+          66.7% 100%,
+          60.7% 92.5%,
+          0% 92.3%,
+          0% 0%
+        );
+      }
+    }
+  }
 </style>

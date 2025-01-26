@@ -58,6 +58,15 @@
   --color-main-3-d2: color-mix(in srgb, var(--color-main-3) 60%, var(--color-bg));
   --color-main-3-d3: color-mix(in srgb, var(--color-main-3) 40%, var(--color-bg));
   --color-main-3-d4: color-mix(in srgb, var(--color-main-3) 20%, var(--color-bg));
+
+  --linearPrimarySecondary: linear-gradient(var(--color-main-1), var(--color-main-2));
+  --linearPrimaryAccent: linear-gradient(var(--color-main-1), var(--color-main-3));
+  --linearSecondaryAccent: linear-gradient(var(--color-main-2), var(--color-main-3));
+  --linearSecondaryPrimary: linear-gradient(var(--color-main-2), var(--color-main-1));
+  --radialPrimarySecondary: radial-gradient(var(--color-main-1), var(--color-main-2));
+  --radialPrimaryAccent: radial-gradient(var(--color-main-1), var(--color-main-3));
+  --radialSecondaryAccent: radial-gradient(var(--color-main-2), var(--color-main-3));
+  --radialSecondaryPrimary: radial-gradient(var(--color-main-2), var(--color-main-1));
 }
 [data-theme="dark"] {
   color-scheme: dark;
@@ -72,13 +81,6 @@
   --color-main-3-rgb: 255, 188, 0;
   --color-bg-rgb: 9, 11, 17;
   --color-text-rgb: 228, 233, 243;
-
-  --linearPrimarySecondary: linear-gradient(#562caf, #66ff66);
-  --linearPrimaryAccent: linear-gradient(#562caf, #ffbc00);
-  --linearSecondaryAccent: linear-gradient(#66ff66, #ffbc00);
-  --radialPrimarySecondary: radial-gradient(#562caf, #66ff66);
-  --radialPrimaryAccent: radial-gradient(#562caf, #ffbc00);
-  --radialSecondaryAccent: radial-gradient(#66ff66, #ffbc00);
 }
 [data-theme="light"] {
   color-scheme: light;

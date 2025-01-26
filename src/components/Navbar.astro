@@ -389,19 +389,8 @@ const iconsLinks: { label: string; href: string; icon: string }[] = [
     gap: 5px;
     cursor: pointer;
     padding: 0.5rem 1rem;
-    clip-path: polygon(
-      10px 0,
-      100% 0,
-      100% calc(100% - 10px),
-      calc(100% - 10px) 100%,
-      0 100%,
-      0 10px
-    );
-    background: linear-gradient(
-      0deg,
-      var(--color-main-1) 0%,
-      var(--color-main-1-d3) 100%
-    );
+    clip-path: polygon(calc(0% + 10px) 0%, 100% 0%, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0% 100%, 0% calc(0% + 10px));
+    background-color: var(--color-main-1);
   }
 
   .menu-line {
@@ -609,7 +598,7 @@ const iconsLinks: { label: string; href: string; icon: string }[] = [
     position: absolute;
     inset: 82px 0 0 0;
     z-index: 11;
-    height: 100vh;
+    height: calc(100vh - 82px);
     width: 100%;
     clip-path: polygon(0 38px, 6px 38px, 20px 18px, calc(0% + 105px) calc(0% + 18px), calc(0% + 130px) 0px, 100% 0px, 100% 100%, 0px 100%);
     transform: translateX(100%);
