@@ -146,7 +146,7 @@ const iconsLinks: { label: string; href: string; icon: string }[] = [
         display: inline-block;
         transition: 0.35s;
         text-transform: uppercase;
-        font-size: var(--size-14px);
+        font-size: var(--size-12px);
         text-shadow: var(--color-text) 0px 0px 8px;
         font-family: var(--font-family-2);
 
@@ -223,6 +223,9 @@ const iconsLinks: { label: string; href: string; icon: string }[] = [
               transform: translate(-6px, 10px);
             }
           }
+        }
+        @media screen and (width >= 1024px){
+          font-size: var(--size-14px);
         }
       }
     }

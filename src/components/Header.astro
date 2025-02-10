@@ -139,15 +139,7 @@ import Navbar from './Navbar.astro';
         right: 0;
         width: 30px;
         height: 98%;
-        background: repeating-linear-gradient(
-          150deg,
-          var(--color-bg),
-          var(--color-bg) 10px,
-          var(--color-main-1-d1) 12px,
-          var(--color-main-1) 11px,
-          var(--color-main-1) 24px,
-          var(--color-main-1-d1) 25px
-        );
+        background-image: repeating-linear-gradient(135deg, transparent, transparent 10px, var(--color-main-1) 11px, var(--color-main-1) 20px);
       }
     }
 
@@ -163,7 +155,7 @@ import Navbar from './Navbar.astro';
         background-color: var(--color-main-1);
         width: 25px;
         height: 30px;
-        clip-path: polygon(0 0, 100% 0, 46% 100%, 0% 100%);
+        clip-path: polygon(0 0, 100% 0, 54% 100%, 0% 100%);
       }
       .logo__decoration-2 {
         position: absolute;
@@ -179,7 +171,7 @@ import Navbar from './Navbar.astro';
       .column-decoration {
         position: absolute;
         top: 0;
-        left: 0;
+        left: 30px;
         width: fit-content;
         height: 82px;
         display: flex;
@@ -191,19 +183,19 @@ import Navbar from './Navbar.astro';
         visibility: visible;
       }
       .bar {
-        width: 25px;
+        width: 15px;
         height: 74px;
         background-color: var(--color-main-1);
         transform: skewX(-20deg);
         transition: 300ms;
 
-        &:nth-last-child(1) {
-          height: 50px;
-          margin-left: 6px;
+        &:nth-last-child(2) {
           background-color: transparent;
           border: 2px solid var(--color-main-1);
         }
-        &:nth-last-child(2) {
+        &:nth-last-child(1) {
+          height: 50px;
+          margin-left: 6px;
           background-color: transparent;
           border: 2px solid var(--color-main-1);
         }
@@ -232,7 +224,7 @@ import Navbar from './Navbar.astro';
 
       .crosses-decoration {
         .cross {
-          color: var(--color-bg);
+          color: var(--color-main-2);
           position: absolute;
           transform: translate(0px, 0px);
           opacity: 0;
@@ -318,7 +310,15 @@ import Navbar from './Navbar.astro';
     @media screen and (width >= 768px) {
       &__logo-content {
         .column-decoration {
-          visibility: hidden;
+          transform: translateX(34px);
+          .bar {
+            &:nth-last-child(2) {
+              background-color: var(--color-main-1);
+            }
+            &:nth-last-child(1) {
+              visibility: hidden;
+            }
+          }
         }
       }
     }
@@ -335,9 +335,17 @@ import Navbar from './Navbar.astro';
           display: none;
         }
         .column-decoration {
-          visibility: visible;
           transform: translateX(54px);
           transition: 300ms;
+          .bar{
+            width: 25px;
+            &:nth-last-child(2) {
+              background-color: transparent;
+            }
+            &:nth-last-child(1) {
+              visibility: visible;
+            }
+          }
         }
       }
     }
@@ -345,7 +353,7 @@ import Navbar from './Navbar.astro';
     @media screen and (width >= 1024px) {
       &__logo-content {
         .column-decoration {
-          transform: translateX(117px);
+          transform: translateX(86px);
         }
       }
       &--big {
@@ -390,7 +398,7 @@ import Navbar from './Navbar.astro';
             transform: translateY(20px);
           }
           .column-decoration {
-            transform: translateX(176px);
+            transform: translateX(115px);
           }
         }
       }
@@ -440,7 +448,7 @@ import Navbar from './Navbar.astro';
             height: 50px;
           }
           .column-decoration {
-            transform: translateX(226px);
+            transform: translateX(196px);
           }
         }
       }
