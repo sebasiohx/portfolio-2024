@@ -1,0 +1,157 @@
+---
+import Ruler from '../Ruler.astro'
+---
+
+<section class='description'>
+  <div class='caution-bar'>
+    <div class='caution-bar__bg1'></div>
+    <div class='caution-bar__bg2'></div>
+
+    <div
+      class='warning-slider'
+      style='
+      --width: 110px;
+      --height: 40px;
+      --quantity: 6;
+    '
+    >
+      <div class='warning-slider__list'>
+        <div class='warning-slider__item' style='--position: 1'>
+          <i class='warning-slider__icon fa fa-warning'></i>
+          <p class='warning-slider__text'>WARNING</p>
+          <i class='warning-slider__icon fa fa-warning'></i>
+        </div>
+        <div class='warning-slider__item' style='--position: 2'>
+          <i class='warning-slider__icon fa fa-warning'></i>
+          <p class='warning-slider__text'>警告</p>
+          <i class='warning-slider__icon fa fa-warning'></i>
+        </div>
+        <div class='warning-slider__item' style='--position: 3'>
+          <i class='warning-slider__icon fa fa-warning'></i>
+          <p class='warning-slider__text'>WARNING</p>
+          <i class='warning-slider__icon fa fa-warning'></i>
+        </div>
+        <div class='warning-slider__item' style='--position: 4'>
+          <i class='warning-slider__icon fa fa-warning'></i>
+          <p class='warning-slider__text'>警告</p>
+          <i class='warning-slider__icon fa fa-warning'></i>
+        </div>
+        <div class='warning-slider__item' style='--position: 5'>
+          <i class='warning-slider__icon fa fa-warning'></i>
+          <p class='warning-slider__text'>WARNING</p>
+          <i class='warning-slider__icon fa fa-warning'></i>
+        </div>
+        <div class='warning-slider__item' style='--position: 6'>
+          <i class='warning-slider__icon fa fa-warning'></i>
+          <p class='warning-slider__text'>警告</p>
+          <i class='warning-slider__icon fa fa-warning'></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <Ruler cm={15} align='left' color='var(--color-main-1)' />
+</section>
+
+<style lang='scss'>
+  .description {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+
+    .caution-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80px;
+
+      :is(.caution-bar__bg1, .caution-bar__bg2) {
+        display: block;
+        content: '';
+        width: 50%;
+        height: 80px;
+        position: absolute;
+        z-index: -2;
+        //filter: blur(1px);
+        animation: pulse 2s linear infinite;
+      }
+      &__bg1 {
+        top: 0;
+        left: 0;
+        background: repeating-linear-gradient(
+          -45deg,
+          var(--color-bg),
+          var(--color-bg) 40px,
+          var(--color-main-2-d2) 41px,
+          var(--color-main-2) 43px,
+          var(--color-main-2) 80px,
+          var(--color-main-2-d2) 82px
+        );
+      }
+      &__bg2 {
+        top: 0;
+        right: 0;
+        background: repeating-linear-gradient(
+          45deg,
+          var(--color-bg),
+          var(--color-bg) 40px,
+          var(--color-main-2-d2) 41px,
+          var(--color-main-2) 43px,
+          var(--color-main-2) 80px,
+          var(--color-main-2-d2) 82px
+        );
+      }
+    }
+
+    .warning-slider {
+      width: 100%;
+      height: var(--height);
+      overflow: hidden;
+      color: var(--color-main-2);
+      background-color: var(--color-bg);
+
+      &:hover .warning-slider__item {
+        animation-play-state: paused;
+      }
+
+      &__list {
+        display: flex;
+        width: 100%;
+        min-width: calc(var(--width) * var(--quantity));
+        position: relative;
+      }
+      &__item {
+        width: var(--width);
+        height: var(--height);
+        position: absolute;
+        left: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: autoRun 10s linear infinite;
+        transition: filter 0.5s;
+        animation-delay: calc(
+          (10s / var(--quantity)) * (var(--position) - 1) - 10s
+        );
+      }
+      &__text {
+        font-size: 1.3rem;
+        font-weight: bold;
+        font-family: var(--font-family-2);
+        margin-left: 1rem;
+        margin-right: 1rem;
+      }
+      &__icon {
+      }
+
+      @keyframes autoRun {
+        from {
+          left: 100%;
+        }
+        to {
+          left: calc(var(--width) * -1);
+        }
+      }
+    }
+  }
+</style>
