@@ -1,0 +1,30 @@
+.ruler {
+  width: 40px;
+  height: inherit; /* 5 cm considerando 1 cm = 40 px */
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.ruler__line {
+  position: absolute;
+  /* left: 0;
+  background: var(--color-text); */
+}
+
+.ruler__line--mm {
+  height: 1px;
+  width: 10px;
+}
+
+.ruler__line--cm {
+  height: 2px;
+  width: 20px;
+}
+
+.ruler__number {
+  position: absolute;
+  /* left: 25px; */
+  font-size: 12px;
+  font-family: var(--font-family-2);
+}
