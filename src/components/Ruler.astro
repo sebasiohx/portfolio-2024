@@ -17,44 +17,42 @@ const {
 <div class='ruler' data-cm={cm} data-align={align} data-color={color}></div>
 
 <script>
-  const ruler = document.querySelector('.ruler');
-  if (!ruler) {
-    throw new Error("No se encuentra el elemento Ruler");
-  }
-  const attr1 = (ruler as HTMLElement).dataset.cm;
-  const centimeters: number = attr1 !== null ? Number(attr1) : 1;
+  document.querySelectorAll('.ruler').forEach(ruler => {
+    const attr1 = ruler.getAttribute("data-cm");
+    const centimeters = attr1 !== null ? Number(attr1) : 1;
 
-  const attr2 = (ruler as HTMLElement).dataset.align;
-  const align: string = attr2 ?? 'left';
+    const attr2 = ruler.getAttribute("data-align");
+    const align = attr2 ?? 'left';
 
-  const attr3 = (ruler as HTMLElement).dataset.color;
-  const color: string = attr3 ?? 'var(--color-text)';
+    const attr3 = ruler.getAttribute("data-color");
+    const color = attr3 ?? 'var(--color-text)';
 
-  for(let i = 0; i <= (centimeters * 10); i++){
-    const line = document.createElement('span');
-    line.classList.add('ruler__line', i % 10 === 0 ? 'ruler__line--cm' : 'ruler__line--mm');
-    line.style.top = i * 4 + 'px'; // 1mm = 4px
-    line.style.backgroundColor = color;
-    if(align === 'left'){
-      line.style.left = '0';
-    } else {
-      line.style.right = '0';
-    }
-
-    if(i % 10 === 0){
-      const number = document.createElement('span');
-      number.classList.add('ruler__number');
-      number.textContent = `${i / 10}`;
-      number.style.top = i * 4 - 5 + 'px';
-      number.style.color = color;
+    for(let i = 0; i <= (centimeters * 10); i++){
+      const line = document.createElement('span');
+      line.classList.add('ruler__line', i % 10 === 0 ? 'ruler__line--cm' : 'ruler__line--mm');
+      line.style.top = i * 4 + 'px'; // 1mm = 4px
+      line.style.backgroundColor = color;
       if(align === 'left'){
-        number.style.left = '25px';
+        line.style.left = '0';
       } else {
-        number.style.right = '25px';
+        line.style.right = '0';
       }
-      ruler.appendChild(number);
-    }
 
-    ruler.appendChild(line);
-  }
+      if(i % 10 === 0){
+        const number = document.createElement('span');
+        number.classList.add('ruler__number');
+        number.textContent = `${i / 10}`;
+        number.style.top = i * 4 - 5 + 'px';
+        number.style.color = color;
+        if(align === 'left'){
+          number.style.left = '25px';
+        } else {
+          number.style.right = '25px';
+        }
+        ruler.appendChild(number);
+      }
+
+      ruler.appendChild(line);
+    }
+  });
 </script>
