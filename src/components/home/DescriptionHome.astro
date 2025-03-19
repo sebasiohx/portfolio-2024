@@ -1,5 +1,9 @@
 ---
-import Ruler from '../Ruler.astro'
+import Image from 'astro/components/Image.astro';
+import Ruler from '../Ruler.astro';
+
+import experienciaImg from '@images/reunion-nerv.jpg';
+import habilidadesImg from '@images/base-nerv.jpg';
 ---
 
 <section class='description'>
@@ -22,9 +26,9 @@ import Ruler from '../Ruler.astro'
           <i class='warning-slider__icon fa fa-warning'></i>
         </div>
         <div class='warning-slider__item' style='--position: 2'>
-          <i class='warning-slider__icon fa fa-warning'></i>
+          <i class='warning-slider__icon fa fa-warning hidden lg:inline'></i>
           <p class='warning-slider__text'>警告</p>
-          <i class='warning-slider__icon fa fa-warning'></i>
+          <i class='warning-slider__icon fa fa-warning hidden lg:inline'></i>
         </div>
         <div class='warning-slider__item' style='--position: 3'>
           <i class='warning-slider__icon fa fa-warning'></i>
@@ -32,9 +36,9 @@ import Ruler from '../Ruler.astro'
           <i class='warning-slider__icon fa fa-warning'></i>
         </div>
         <div class='warning-slider__item' style='--position: 4'>
-          <i class='warning-slider__icon fa fa-warning'></i>
+          <i class='warning-slider__icon fa fa-warning hidden lg:inline'></i>
           <p class='warning-slider__text'>警告</p>
-          <i class='warning-slider__icon fa fa-warning'></i>
+          <i class='warning-slider__icon fa fa-warning hidden lg:inline'></i>
         </div>
         <div class='warning-slider__item' style='--position: 5'>
           <i class='warning-slider__icon fa fa-warning'></i>
@@ -42,20 +46,106 @@ import Ruler from '../Ruler.astro'
           <i class='warning-slider__icon fa fa-warning'></i>
         </div>
         <div class='warning-slider__item' style='--position: 6'>
-          <i class='warning-slider__icon fa fa-warning'></i>
+          <i class='warning-slider__icon fa fa-warning hidden lg:inline'></i>
           <p class='warning-slider__text'>警告</p>
-          <i class='warning-slider__icon fa fa-warning'></i>
+          <i class='warning-slider__icon fa fa-warning hidden lg:inline'></i>
         </div>
       </div>
     </div>
   </div>
+
+  <div class='ruler-deco ruler-deco--1'>
+    <Ruler cm={30} align='left' color='var(--color-main-1)' />
+  </div>
+
+  <div class='ruler-deco ruler-deco--2'>
+    <Ruler cm={30} align='right' color='var(--color-main-1)' />
+  </div>
+
+  <div class="container px-6 lg:px-20 mx-auto">
+    <div class='card-experience'>
+      <h2 class="card-experience__title title-evangelion">Experiencia</h2>
+      <figure class='card-experience__img-content'>
+        <Image
+          src={experienciaImg}
+          class='card-experience__img'
+          alt='reunión de trabajo'
+        />
+      </figure>
+      <div class="bar-decoration"></div>
+      <div class='card-content years'>
+        <h3 class='card-content__title'>
+          <span class='card-content__number'>+07</span>
+          Años
+        </h3>
+        <p class='card-content__text'>De experiencia en maquetación</p>
+      </div>
+      <div class='card-content companies'>
+        <h3 class='card-content__title'>
+          <span class='card-content__number'>03</span>
+          Empresas
+        </h3>
+        <ul class='card-content__list'>
+          <li class='card-content__item'>2Brains</li>
+          <li class='card-content__item'>Ki Technologies</li>
+          <li class='card-content__item'>Cardumen LATAM</li>
+        </ul>
+      </div>
+      <div class='card-content career'>
+        <h3 class='card-content__title'>
+          <span class='card-content__number'>02</span>
+          Carreras
+        </h3>
+        <ul class='card-content__list'>
+          <li class='card-content__item'>Desarrollo y Diseño Web</li>
+          <li class='card-content__item'>Diseño Gráfico</li>
+        </ul>
+      </div>
+    </div>
   
-  <Ruler cm={15} align='left' color='var(--color-main-1)' />
+    <div class='card-skills'>
+      <h2 class="card-skills__title title-evangelion">Habilidades</h2>
+      <div class='card-content languages'>
+        <h3 class='card-content__title'>
+          Lenguajes web
+        </h3>
+        <ul class='card-content__list'>
+          <li class='card-content__item'>HTML</li>
+          <li class='card-content__item'>CSS</li>
+          <li class='card-content__item'>JavaScript</li>
+        </ul>
+      </div>
+      <div class='card-content tools'>
+        <h3 class='card-content__title'>Experiencia frameworks</h3>
+        <ul class='card-content__list'>
+          <li class='card-content__item'>Astro JS</li>
+          <li class='card-content__item'>React</li>
+          <li class='card-content__item'>Angular</li>
+        </ul>
+      </div>
+      <div class='card-content border-0 skills'>
+        <h3 class='card-content__title'>Competencias en</h3>
+        <ul class='card-content__list'>
+          <li class='card-content__item'>Git - GitHub</li>
+          <li class='card-content__item'>Design System</li>
+          <li class='card-content__item'>Scrum (metodología ágil)</li>
+        </ul>
+      </div>
+      <div class="bar-decoration"></div>
+      <figure class='card-skills__img-content'>
+        <Image
+          src={habilidadesImg}
+          class='card-skills__img'
+          alt='oficina de trabajo'
+        />
+      </figure>
+    </div>
+  </div>
 </section>
 
 <style lang='scss'>
   .description {
-    height: 100vh;
+    //height: 100vh;
     position: relative;
     overflow: hidden;
 
@@ -152,6 +242,125 @@ import Ruler from '../Ruler.astro'
           left: calc(var(--width) * -1);
         }
       }
+    }
+
+    .ruler-deco {
+      position: absolute;
+      z-index: -1;
+      top: 84px;
+
+      &--1 {
+        left: -6px;
+      }
+      &--2 {
+        right: -6px;
+      }
+
+      @media screen and (width >= 768px) {
+        &--1 {
+          left: 0;
+        }
+        &--2 {
+          right: 0;
+        }
+      }
+    }
+  }
+
+  .card-content{
+    width: 20%;
+    border-right: 1px solid var(--color-main-2);
+    display: flex;
+    flex-direction: column;
+    //padding-top: 6cqh;
+    padding-left: 8px;
+    padding-right: 8px;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-evenly;
+
+    :is(&:last-child, &.border-0){
+      border-right: none;
+    }
+    &__title{
+      font-family: var(--font-family-3);
+      font-size: 40px;
+      line-height: 50px;
+      color: var(--color-main-1);
+    }
+    &__number {
+      display: block;
+      font-size: 60px;
+    }
+    &__text{
+      width: 70%;
+      font-size: 14px;
+      min-height: 65px;
+    }
+    &__list{
+      padding-left: 18px;
+      font-size: 14px;
+      min-height: 65px;
+    }
+    &__item{
+      list-style-type: disclosure-closed;
+      &::marker{
+        color: var(--color-main-3);
+      }
+    }
+  }
+
+  .bar-decoration{
+    width: 3%;
+    background-image: repeating-linear-gradient(135deg,transparent,transparent 10px,var(--color-main-2) 11px,var(--color-main-2) 20px);
+  }
+
+  .card-experience{
+    position: relative;
+    width: 90%;
+    border: 1px solid var(--color-main-2);
+    padding: var(--size-8px);
+    display: flex;
+    position: relative;
+    margin-top: 140px;
+    gap: var(--size-8px);
+
+    &__title{
+      position: absolute;
+      top: -60px;
+      left: 0;
+      font-size: var(--size-40px);
+    }
+    &__img-content{
+      width: 35%;
+    }
+  }
+
+  .card-skills{
+    position: relative;
+    width: 90%;
+    border: 1px solid var(--color-main-2);
+    padding: var(--size-8px);
+    display: flex;
+    position: relative;
+    margin-top: 120px;
+    margin-bottom: 120px;
+    margin-left: 10%;
+    gap: var(--size-8px);
+
+    &__title{
+      position: absolute;
+      top: -60px;
+      right: 0;
+      font-size: var(--size-40px);
+    }
+    &__img-content{
+      width: 35%;
+    }
+
+    .card-content__title{
+      font-size: 30px;
+      line-height: 30px;
     }
   }
 </style>

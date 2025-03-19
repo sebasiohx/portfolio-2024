@@ -114,10 +114,6 @@ code {
     monospace;
 }
 
-.bgc-gradient-1{
-  background-color: var(--color-main-1-d3);
-}
-
 @media (min-width: 1536px) {
   .container {
     /* max-width: 1536px; */
@@ -130,6 +126,7 @@ code {
   }
 }
 
+/* Animations */
 @keyframes blink-in {
   0%,30%,60% {
       opacity: 0
@@ -147,8 +144,18 @@ code {
   100%{ opacity: 1}
 }
 
+/* Utilities */
 .ejemplpo-bg-gradiente-repeat{
   background: repeating-linear-gradient(115deg, var(--color-bg), var(--color-bg) 10px, var(--color-bg) 20px, var(--color-main-1) 21px, var(--color-main-1) 40px, var(--color-main-1) 41px);
+}
+
+.title-evangelion{
+  font-family: var(--font-family-1);
+  transform: scale(1,1.5);
+  line-height: 1.2em;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
 /* :global([data-theme="light"]) {
