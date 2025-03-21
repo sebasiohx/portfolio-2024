@@ -80,7 +80,7 @@ const medidaRuler:number = 49;
           <span class='card-content__number'>+07</span>
           Años
         </h3>
-        <ul class="card-content__list w-[70%]">
+        <ul class="card-content__list">
           <li class="card-content__item">De experiencia en maquetación</li>
         </ul>
       </div>
@@ -107,7 +107,7 @@ const medidaRuler:number = 49;
       </div>
     </div>
   
-    <div class='card-skills mt-32 mb-20 ml-0 lg:mb-32 lg:ml-[10%]'>
+    <div class='card-skills mt-32 mb-20 ml-0 lg:mb-32 md:ml-[10%]'>
       <h2 class="card-skills__title title-evangelion">Habilidades</h2>
       <div class='card-content languages'>
         <h3 class='card-content__title mb-4 lg:mb-0'>
@@ -158,7 +158,7 @@ const medidaRuler:number = 49;
           </li>
         </ul>
       </div>
-      <div class='card-content border-0 skills'>
+      <div class='card-content skills'>
         <h3 class='card-content__title mb-4 lg:mb-0'>Competencias en</h3>
         <ul class='card-content__list mb-4 lg:mb-0'>
           <li class='card-content__item'>Git - GitHub</li>
@@ -299,8 +299,10 @@ const medidaRuler:number = 49;
       &--2 {
         right: -7px;
       }
-
-      @media screen and (width >= 768px) {
+      @media screen and (width >= 768px){
+        opacity: 0.6;
+      }
+      @media screen and (width >= 1024px) {
         opacity: 1;
         &--1 {
           left: 0;
@@ -314,8 +316,8 @@ const medidaRuler:number = 49;
 
   .card-content{
     width: 100%;
-    border-right: none;
-    border-top: 1px solid var(--color-main-2);
+    //border-right: none;
+    //border-top: 1px solid var(--color-main-2);
     display: flex;
     flex-direction: column;
     padding: 1rem 0;
@@ -323,9 +325,7 @@ const medidaRuler:number = 49;
     align-content: center;
     justify-content: space-evenly;
 
-    :is(&:last-child, &.border-0){
-      border-right: none;
-    }
+    
     &__title{
       font-family: var(--font-family-3);
       font-size: clamp(2rem, 5vw, 2.5rem);
@@ -351,11 +351,11 @@ const medidaRuler:number = 49;
       display: flex;
       gap: 0.5rem;
     }
-
-    @media screen and (width >= 1024px) {
+    @media screen and (width >= 768px){
+      width: 49%;
+    }
+    @media screen and (width >= 1280px) {
       width: 20%;
-      border-right: 1px solid var(--color-main-2);
-      border-top: none;
       padding: 0 0.5rem;
 
       &__number {
@@ -375,9 +375,13 @@ const medidaRuler:number = 49;
     height: 25px;
     background-image: repeating-linear-gradient(135deg,transparent,transparent 10px,var(--color-main-2) 11px,var(--color-main-2) 20px);
 
-    @media screen and (width >= 1024px){
+    @media screen and (width >= 768px){
+      display: none;
+    }
+    @media screen and (width >= 1280px){
       width: 3%;
       height: auto;
+      display: block;
     }
   }
 
@@ -402,16 +406,41 @@ const medidaRuler:number = 49;
     &__img-content{
       width: 100%;
     }
-    @media screen and (width >= 1024px){
+    .card-content{
+      border-top: 1px solid var(--color-main-2);
+    }
+    @media screen and (width >= 768px){
       width: 90%;
       flex-direction: row;
+      flex-wrap: wrap;
 
-      &__img-content{
-        width: 35%;
+      &__title{
+        width: auto;
       }
+      &__img-content{
+        width: 49%;
+      }
+      .card-content.years{
+        border-top: 0;
+      }
+    }
+    @media screen and (width >= 1280px){
+      flex-wrap: nowrap;
+
       &__title{
         width: auto;
         text-align: unset;
+      }
+      &__img-content{
+        width: 35%;
+      }
+      .card-content{
+        border-top: 0;
+        border-left: 1px solid var(--color-main-2);
+
+        .years{
+          border-left: 0;
+        }
       }
     }
   }
@@ -438,19 +467,32 @@ const medidaRuler:number = 49;
       width: 100%;
     }
     .card-content{
-      border-top: none;
       border-bottom: 1px solid var(--color-main-2);
       padding: 1rem 0 1.5rem;
 
       &__title{
-        font-size: clamp(1.8rem,5vw,2.125rem);
+        font-size: clamp(1.8rem,5vw,2rem);
         line-height: 30px;
-        width: 82%;
+        width: min(65%, 238px);
       }
     }
-    @media screen and (width >= 1024px){
+    @media screen and (width >= 768px){
       width: 90%;
       flex-direction: row;
+      flex-wrap: wrap;
+
+      &__title{
+        width: auto;
+      }
+      &__img-content{
+        width: 49%;
+      }
+      .card-content.skills{
+        border-bottom: 0;
+      }
+    }
+    @media screen and (width >= 1280px){
+      flex-wrap: nowrap;
 
       &__title{
         width: auto;
@@ -460,11 +502,24 @@ const medidaRuler:number = 49;
         width: 35%;
       }
       .card-content{
+        width: 26%;
         border-bottom: none;
         padding: 0 0.5rem;
+        border-right: 1px solid var(--color-main-2);
 
         &__title{
           width: 100%;
+          font-size: var(--size-30px);
+        }
+        .skills{
+          border-right: 0;
+        }
+      }
+    }
+    @media screen and (width >= 1900px){
+      .card-content{
+        &__title{
+          font-size: var(--size-36px);
         }
       }
     }
