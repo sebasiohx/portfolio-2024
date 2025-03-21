@@ -316,8 +316,6 @@ const medidaRuler:number = 49;
 
   .card-content{
     width: 100%;
-    //border-right: none;
-    //border-top: 1px solid var(--color-main-2);
     display: flex;
     flex-direction: column;
     padding: 1rem 0;
@@ -325,7 +323,6 @@ const medidaRuler:number = 49;
     align-content: center;
     justify-content: space-evenly;
 
-    
     &__title{
       font-family: var(--font-family-3);
       font-size: clamp(2rem, 5vw, 2.5rem);
@@ -394,6 +391,7 @@ const medidaRuler:number = 49;
     flex-direction: column;
     gap: var(--size-8px);
     position: relative;
+    box-shadow: var(--color-main-2) 0px 0px 10px;
 
     &__title{
       position: absolute;
@@ -426,6 +424,7 @@ const medidaRuler:number = 49;
     }
     @media screen and (width >= 1280px){
       flex-wrap: nowrap;
+      min-height: 275px;
 
       &__title{
         width: auto;
@@ -433,6 +432,10 @@ const medidaRuler:number = 49;
       }
       &__img-content{
         width: 35%;
+      }
+      &__img{
+        object-fit: cover;
+        height: 100%;
       }
       .card-content{
         border-top: 0;
@@ -454,6 +457,7 @@ const medidaRuler:number = 49;
     flex-direction: column;
     gap: var(--size-8px);
     position: relative;
+    box-shadow: var(--color-main-2) 0px 0px 10px;
 
     &__title{
       position: absolute;
@@ -493,6 +497,11 @@ const medidaRuler:number = 49;
     }
     @media screen and (width >= 1280px){
       flex-wrap: nowrap;
+      min-height: 275px;
+      &__img{
+        object-fit: cover;
+        height: 100%;
+      }
 
       &__title{
         width: auto;
@@ -500,6 +509,10 @@ const medidaRuler:number = 49;
       }
       &__img-content{
         width: 35%;
+      }
+      &__img{
+        object-fit: cover;
+        height: 100%;
       }
       .card-content{
         width: 26%;
@@ -517,7 +530,9 @@ const medidaRuler:number = 49;
       }
     }
     @media screen and (width >= 1900px){
+      min-height: 336px;
       .card-content{
+        width: 22%;
         &__title{
           font-size: var(--size-36px);
         }

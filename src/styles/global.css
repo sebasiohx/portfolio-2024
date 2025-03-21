@@ -159,6 +159,7 @@ code {
   letter-spacing: -0.03em;
   text-transform: uppercase;
   font-weight: bold;
+  text-shadow: 0 0 2px #e19a86,0 0 1.5px #854535,0 0 1.5px #5c150c;
 }
 
 /* :global([data-theme="light"]) {
